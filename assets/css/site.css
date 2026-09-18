@@ -83,7 +83,6 @@
 .glifo-m { width: 26px; height: 26px; }
 .glifo-p { width: 16px; height: 16px; }
 .glifo-g { width: 52px; height: 52px; stroke-width: 16; }
-.glifo-i { width: 13px; height: 13px; vertical-align: -1px; display: inline-block; }
 
 .periodo {
   flex: none;
@@ -511,18 +510,6 @@ code { font-family: var(--mono); font-size: .88em; }
   color: var(--tinta-2);
 }
 
-.marginalia {
-  margin-top: 1.6rem;
-  max-width: 40rem;
-  margin-inline-start: auto;
-  padding-inline-start: 1.1rem;
-  border-inline-start: 3px solid var(--ocre);
-  font-size: .95rem;
-  color: var(--tinta-2);
-}
-.marginalia p { margin: 0; }
-.marginalia p + p { margin-top: .85rem; }
-
 @media (max-width: 760px) {
   .bancada { padding: 1.1rem; }
   .quadro { grid-template-columns: minmax(0, 1fr); }
@@ -749,13 +736,6 @@ code { font-family: var(--mono); font-size: .88em; }
 .c-v { color: var(--musgo); }
 
 .bilhete-seta svg { width: 82px; height: 30px; fill: none; stroke: var(--terra); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
-
-.bilhete-nota {
-  grid-column: 1 / -1;
-  margin: .4rem 0 0;
-  font-size: .95rem;
-  color: var(--tinta-2);
-}
 
 .bando-grade {
   display: grid;
