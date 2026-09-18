@@ -1,0 +1,862 @@
+/* =========================================================================
+   jayio — caderno de campo
+   Papel, tinta e aquarela. Nada de cartão com sombra azul e gradiente roxo.
+   ========================================================================= */
+
+:root {
+  --papel:      #f6f2e8;
+  --papel-2:    #fffdf7;
+  --papel-3:    #efe9da;
+  --tinta:      #23201b;
+  --tinta-2:    #4a4438;
+  --tinta-3:    #7b7365;
+  --azul:       #0b6fb8;
+  --azul-forte: #1391e0;
+  --azul-lavado:#dceaf6;
+  --musgo:      #6c7c47;
+  --ocre:       #b4842c;
+  --terra:      #a4552f;
+  --borda:      #ddd4c0;
+  --borda-forte:#c3b89f;
+  --sombra:     0 1px 0 rgba(35, 32, 27, .06), 0 10px 26px -20px rgba(35, 32, 27, .5);
+
+  --largura: 1140px;
+  --gutter: 16px;
+
+  --mao: "Shantell Sans", "Comic Sans MS", cursive;
+  --texto: "Newsreader", Georgia, "Times New Roman", serif;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) {
+    --papel:      #17181b;
+    --papel-2:    #1e2025;
+    --papel-3:    #24262c;
+    --tinta:      #ece7db;
+    --tinta-2:    #c8c2b4;
+    --tinta-3:    #948c7e;
+    --azul:       #56b6f0;
+    --azul-forte: #7fcbfb;
+    --azul-lavado:#1b2c3a;
+    --musgo:      #9db26c;
+    --ocre:       #d5a950;
+    --terra:      #d2825a;
+    --borda:      #33353c;
+    --borda-forte:#474a53;
+    --sombra:     0 1px 0 rgba(0, 0, 0, .3), 0 10px 26px -20px rgba(0, 0, 0, .9);
+  }
+}
+
+:root[data-tema="escuro"] {
+  --papel:      #17181b;
+  --papel-2:    #1e2025;
+  --papel-3:    #24262c;
+  --tinta:      #ece7db;
+  --tinta-2:    #c8c2b4;
+  --tinta-3:    #948c7e;
+  --azul:       #56b6f0;
+  --azul-forte: #7fcbfb;
+  --azul-lavado:#1b2c3a;
+  --musgo:      #9db26c;
+  --ocre:       #d5a950;
+  --terra:      #d2825a;
+  --borda:      #33353c;
+  --borda-forte:#474a53;
+  --sombra:     0 1px 0 rgba(0, 0, 0, .3), 0 10px 26px -20px rgba(0, 0, 0, .9);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* O sprite dos 14 glifos fica fora do fluxo; cada uso é um <svg><use>. Os
+   arquivos originais do app são preto fixo, então sumiriam no papel escuro:
+   aqui o traço é currentColor e o tema resolve. */
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.glifo {
+  flex: none;
+  stroke: currentColor;
+  stroke-width: 22;
+  fill: none;
+}
+.glifo-c { width: 15px; height: 15px; }
+.glifo-m { width: 26px; height: 26px; }
+.glifo-p { width: 16px; height: 16px; }
+.glifo-g { width: 52px; height: 52px; stroke-width: 16; }
+.glifo-i { width: 13px; height: 13px; vertical-align: -1px; display: inline-block; }
+
+.periodo {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  color: var(--tinta-3);
+}
+
+/* `display: inline-flex` nos botões ganha do `display: none` que o atributo
+   hidden carrega no UA stylesheet. Sem isto o botão de voltar nasce visível. */
+[hidden] { display: none !important; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background-color: var(--papel);
+  /* Fibra do papel: três manchas de aquarela bem diluídas, sem imagem externa. */
+  background-image:
+    radial-gradient(60rem 40rem at 12% -6%, color-mix(in oklab, var(--azul) 11%, transparent), transparent 60%),
+    radial-gradient(48rem 34rem at 96% 18%, color-mix(in oklab, var(--musgo) 12%, transparent), transparent 62%),
+    radial-gradient(52rem 38rem at 40% 108%, color-mix(in oklab, var(--ocre) 10%, transparent), transparent 60%);
+  background-attachment: fixed;
+  color: var(--tinta);
+  font-family: var(--texto);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .etiqueta, .btn, .marca, .conta, .relogio-hora {
+  font-family: var(--mao);
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+h1, h2, h3 { line-height: 1.12; margin: 0 0 .5em; text-wrap: balance; }
+p { text-wrap: pretty; }
+
+a { color: var(--azul); text-underline-offset: .18em; text-decoration-thickness: from-font; }
+a:hover { color: var(--azul-forte); }
+
+code { font-family: var(--mono); font-size: .88em; }
+
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2.5px solid var(--azul-forte);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.pular {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--papel-2);
+  padding: .7rem 1rem;
+  z-index: 99;
+}
+.pular:focus { left: 8px; top: 8px; }
+
+.miudo { font-size: .875rem; color: var(--tinta-3); }
+
+.etiqueta {
+  font-size: .78rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin: 0 0 .6rem;
+}
+
+/* ---------------------------------------------------------------- botões -- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .58rem 1.1rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--tinta);
+  background: transparent;
+  color: var(--tinta);
+  font-size: .95rem;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .14s ease, background-color .16s ease, color .16s ease, box-shadow .16s ease;
+}
+.btn:hover { transform: translateY(-1.5px); }
+.btn:active { transform: translateY(0); }
+
+.btn-primario {
+  background: var(--tinta);
+  color: var(--papel);
+  box-shadow: var(--sombra);
+}
+.btn-primario:hover { background: var(--azul); border-color: var(--azul); color: #fff; }
+
+.btn-fantasma:hover { background: color-mix(in oklab, var(--tinta) 8%, transparent); color: var(--tinta); }
+
+.btn-g { padding: .78rem 1.5rem; font-size: 1.05rem; }
+
+.btn-tema {
+  border: 0;
+  background: transparent;
+  color: var(--tinta-3);
+  font-family: var(--texto);
+  font-size: .875rem;
+  cursor: pointer;
+  padding: .4rem .5rem;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+  text-decoration-style: dotted;
+}
+.btn-tema:hover { color: var(--tinta); }
+
+/* ---------------------------------------------------------------- topo --- */
+
+.topo {
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 1.4rem var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* O traço da logo é azul-marinho e some no papel escuro. Inverter e girar o
+   matiz devolve o azul do gaio em vez de virar laranja. */
+.marca img { display: block; height: 38px; width: auto; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) .marca img { filter: invert(1) hue-rotate(180deg); }
+}
+:root[data-tema="escuro"] .marca img { filter: invert(1) hue-rotate(180deg); }
+
+/* Sem menu, quem empurra as ações para a direita é a própria margem. */
+.topo-acoes {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  margin-inline-start: auto;
+}
+
+/* ------------------------------------------------------------ abertura --- */
+
+.abertura {
+  max-width: var(--largura);
+  margin: 1.5rem auto 4rem;
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.abertura h1 {
+  font-size: clamp(2.2rem, 4.6vw, 3.45rem);
+  margin-bottom: .45em;
+}
+.abertura h1 em {
+  font-style: italic;
+  color: var(--azul);
+  position: relative;
+  white-space: nowrap;
+}
+/* sublinhado à mão, desenhado com gradiente para não pedir outro arquivo */
+.abertura h1 em::after {
+  content: "";
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  bottom: .04em;
+  height: .16em;
+  background: var(--ocre);
+  opacity: .55;
+  border-radius: 999px;
+  transform: rotate(-.8deg);
+}
+
+.linha-fina { font-size: 1.16rem; color: var(--tinta-2); max-width: 34rem; }
+
+.abertura-btns { display: flex; gap: .8rem; flex-wrap: wrap; margin: 1.8rem 0 1rem; }
+
+.abertura-fig { margin: 0; }
+.abertura-fig img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--borda);
+  box-shadow: var(--sombra);
+  transform: rotate(1.1deg);
+}
+.abertura-fig figcaption {
+  margin-top: 1.1rem;
+  font-size: .9rem;
+  color: var(--tinta-3);
+  font-style: italic;
+  padding-inline-start: 1rem;
+  border-inline-start: 2px solid var(--borda-forte);
+}
+
+@media (max-width: 900px) {
+  .abertura { grid-template-columns: 1fr; gap: 2.2rem; margin-bottom: 2.5rem; }
+  .abertura-fig img { transform: none; }
+}
+
+/* ------------------------------------------------------------ divisor --- */
+
+/* Galho com gaio pousado. Entra como máscara e não como imagem: o PNG é uma
+   silhueta em fundo transparente, o canal alfa faz o recorte e a cor vem do
+   CSS, então o divisor acompanha o tema sem precisar de duas artes.
+
+   A altura sai do `aspect-ratio`, não de um valor fixo. Com altura fixa a
+   máscara é escalada pela largura e o que passa do box é cortado: foi assim que
+   as folhas de baixo sumiram. Amarrando a caixa à proporção do PNG, arte e
+   elemento têm sempre o mesmo tamanho. */
+.fio {
+  width: min(100% - 2 * var(--gutter), 64rem);
+  margin: 0 auto;
+  border: 0;
+  aspect-ratio: 1024 / 80;
+  background-color: var(--borda-forte);
+  -webkit-mask-image: url("../img/fio.png");
+  mask-image: url("../img/fio.png");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  opacity: .9;
+}
+
+/* -------------------------------------------------------------- seções --- */
+
+.secao {
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 4rem var(--gutter);
+}
+
+.secao-cabeca { max-width: 44rem; margin-bottom: 2.5rem; }
+.secao h2 { font-size: clamp(1.9rem, 4.2vw, 2.9rem); }
+.secao-sub { font-size: 1.1rem; color: var(--tinta-2); margin: 0; }
+
+/* ------------------------------------------------------------- bancada --- */
+
+.bancada {
+  background: var(--papel-2);
+  border: 1px solid var(--borda);
+  border-radius: 16px;
+  padding: 1.6rem;
+  box-shadow: var(--sombra);
+}
+
+.relogio {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+  padding-bottom: 1.4rem;
+  margin-bottom: 1.4rem;
+  border-bottom: 1px dashed var(--borda-forte);
+}
+
+.relogio-face { display: flex; flex-direction: column; }
+.relogio-hora {
+  font-size: 2.6rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--tinta);
+  transition: color .3s ease;
+}
+.relogio.virou .relogio-hora { color: var(--azul); }
+.relogio-fuso { font-family: var(--mono); font-size: .78rem; color: var(--tinta-3); margin-top: .35rem; }
+
+.relogio-btns { display: flex; gap: .7rem; flex-wrap: wrap; margin-inline-start: auto; }
+
+/* minmax(0, 1fr) e min-width: 0 em toda a cadeia: sem isso o `nowrap` da
+   descrição vira a largura mínima do grid e a coluna estoura a tela no celular,
+   em vez de o texto cortar com reticências. */
+.quadro {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.coluna {
+  min-width: 0;
+  background: var(--papel-3);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: .9rem .8rem 1rem;
+  min-height: 19rem;
+}
+.coluna-arquivo { opacity: .82; }
+
+.coluna h3 {
+  font-size: 1.02rem;
+  margin: 0 0 .8rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  color: var(--tinta-2);
+}
+.conta {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.6em;
+  height: 1.6em;
+  border-radius: 999px;
+  background: var(--papel-2);
+  border: 1px solid var(--borda-forte);
+  font-size: .76rem;
+  color: var(--tinta-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.pilha { list-style: none; margin: 0; padding: 0; display: grid; gap: .55rem; min-width: 0; }
+
+.cartao {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  min-width: 0;
+  background: var(--papel-2);
+  border: 1px solid var(--borda);
+  border-radius: 9px;
+  padding: .55rem .7rem;
+  font-size: .9rem;
+  line-height: 1.35;
+  color: var(--tinta);
+  box-shadow: 0 1px 0 color-mix(in oklab, var(--tinta) 5%, transparent);
+  transition: transform .52s cubic-bezier(.2, .8, .25, 1), border-color .3s ease, opacity .3s ease;
+  will-change: transform;
+}
+.cartao.mexeu { border-color: var(--ocre); }
+
+.cartao-txt {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cartao.risca { color: var(--tinta-3); }
+.cartao.risca .cartao-txt { text-decoration: line-through; }
+
+.cartao-fim { display: flex; align-items: center; gap: .3rem; flex: none; }
+
+.cartao-data {
+  font-family: var(--mono);
+  font-size: .65rem;
+  color: var(--terra);
+  border: 1px solid color-mix(in oklab, var(--terra) 45%, transparent);
+  border-radius: 999px;
+  padding: .05rem .4rem;
+}
+
+.tag {
+  font-size: .68rem;
+  font-family: var(--mono);
+  padding: .05rem .4rem;
+  border-radius: 999px;
+  background: var(--papel-3);
+  border: 1px solid var(--borda);
+  color: var(--tinta-3);
+}
+
+.regras {
+  list-style: none;
+  counter-reset: r;
+  margin: 1.5rem 0 0;
+  padding: 1.3rem 0 0;
+  border-top: 1px dashed var(--borda-forte);
+  display: grid;
+  gap: .55rem;
+}
+.regras li {
+  counter-increment: r;
+  display: flex;
+  align-items: baseline;
+  gap: .6rem;
+  font-size: .92rem;
+  color: var(--tinta-3);
+  opacity: .5;
+  transition: opacity .3s ease, color .3s ease;
+}
+.regras li::before {
+  content: counter(r);
+  font-family: var(--mono);
+  font-size: .7rem;
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+}
+.regras li code { color: inherit; font-weight: 600; }
+.regras li.acesa { opacity: 1; color: var(--tinta); }
+.regras li.acesa code { color: var(--azul); }
+.regra-saldo { margin-inline-start: auto; font-family: var(--mono); font-size: .78rem; color: var(--ocre); }
+
+.bancada-nota {
+  margin: 1.2rem 0 0;
+  font-size: .92rem;
+  font-style: italic;
+  color: var(--tinta-3);
+}
+
+.bancada-regra {
+  max-width: 34rem;
+  margin: 1.4rem 0 0;
+  font-family: var(--mao);
+  font-size: 1.12rem;
+  line-height: 1.45;
+  color: var(--tinta-2);
+}
+
+.marginalia {
+  margin-top: 1.6rem;
+  max-width: 40rem;
+  margin-inline-start: auto;
+  padding-inline-start: 1.1rem;
+  border-inline-start: 3px solid var(--ocre);
+  font-size: .95rem;
+  color: var(--tinta-2);
+}
+.marginalia p { margin: 0; }
+.marginalia p + p { margin-top: .85rem; }
+
+@media (max-width: 760px) {
+  .bancada { padding: 1.1rem; }
+  .quadro { grid-template-columns: minmax(0, 1fr); }
+  .coluna { min-height: 0; }
+  .relogio-btns { margin-inline-start: 0; width: 100%; }
+  .relogio-hora { font-size: 2.1rem; }
+}
+
+/* ------------------------------------------------------------- caderno --- */
+
+.caderno {
+  display: grid;
+  grid-template-columns: 1.25fr .85fr;
+  gap: 2.5rem 3rem;
+  align-items: start;
+}
+
+.preceitos {
+  grid-row: span 2;
+  list-style: none;
+  counter-reset: preceito;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.6rem;
+}
+
+.preceitos li {
+  counter-increment: preceito;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .3rem 1.1rem;
+}
+
+/* O número é um algarismo escrito à mão na margem, como num caderno. */
+.preceitos li::before {
+  content: counter(preceito);
+  grid-row: span 2;
+  font-family: var(--mao);
+  font-size: 1.9rem;
+  line-height: 1;
+  color: var(--ocre);
+  width: 1.4em;
+}
+
+.preceitos h3 { font-size: 1.22rem; margin: 0; align-self: center; }
+.preceitos p { margin: 0; color: var(--tinta-2); font-size: .98rem; }
+
+.preceito-citacao {
+  margin: 0;
+  padding: 1.4rem 1.5rem;
+  background: var(--papel-2);
+  border: 1px solid var(--borda);
+  border-inline-start: 4px solid var(--ocre);
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+}
+.preceito-citacao p {
+  margin: 0;
+  font-family: var(--mao);
+  font-size: 1.32rem;
+  line-height: 1.35;
+  color: var(--tinta);
+}
+
+.caderno-fecho {
+  margin: 0;
+  font-size: .98rem;
+  color: var(--tinta-2);
+  padding-inline-start: 1.1rem;
+  border-inline-start: 2px solid var(--borda-forte);
+}
+
+@media (max-width: 860px) {
+  .caderno { grid-template-columns: 1fr; gap: 1.8rem; }
+  .preceitos { grid-row: auto; }
+  .preceitos li::before { font-size: 1.6rem; }
+}
+
+/* --------------------------------------------------------------- régua --- */
+
+.regua-caixa {
+  background: var(--papel-2);
+  border: 1px solid var(--borda);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: var(--sombra);
+}
+
+.regua-cabeca {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  padding-bottom: 1.3rem;
+  margin-bottom: 1.3rem;
+  border-bottom: 1px dashed var(--borda-forte);
+}
+
+.regua-leitura { display: flex; flex-direction: column; flex: 1 1 15rem; min-width: 0; }
+.regua-leitura strong { font-size: 1.05rem; }
+.regua-leitura span { font-size: .85rem; color: var(--tinta-3); }
+
+.regua-forma { display: inline-flex; gap: .25rem; padding: .25rem; border-radius: 10px; background: var(--papel-3); border: 1px solid var(--borda); }
+
+.forma-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .4rem .7rem;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--tinta-3);
+  font-family: inherit;
+  font-size: .85rem;
+  cursor: pointer;
+  transition: background-color .15s ease, color .15s ease;
+}
+.forma-btn[aria-pressed="true"] { background: var(--papel-2); color: var(--tinta); box-shadow: 0 1px 2px color-mix(in oklab, var(--tinta) 12%, transparent); }
+.forma-btn:hover { color: var(--tinta); }
+
+.regua { display: flex; flex-wrap: wrap; gap: .3rem; }
+
+.regua-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .35rem;
+  padding: .55rem;
+  border: 1.5px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--tinta-3);
+  font-family: inherit;
+  cursor: pointer;
+  opacity: .5;
+  transition: opacity .15s ease, border-color .15s ease, background-color .15s ease, color .15s ease;
+}
+.regua-btn:hover { opacity: .85; color: var(--tinta); }
+.regua-btn[aria-pressed="true"] {
+  opacity: 1;
+  color: var(--tinta);
+  border-color: var(--azul);
+  background: color-mix(in oklab, var(--azul) 8%, transparent);
+}
+
+
+@media (max-width: 760px) {
+  .regua-caixa { padding: 1.1rem; }
+  .regua-btn { padding: .6rem .2rem; }
+}
+
+/* ------------------------------------------------------------- bolotas --- */
+
+.bolotas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; }
+
+.bolota {
+  background: var(--papel-2);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: var(--sombra);
+}
+.bolota:nth-child(odd) { transform: rotate(-.3deg); }
+.bolota:nth-child(even) { transform: rotate(.25deg); }
+
+.bolota-ico {
+  width: 40px;
+  height: 40px;
+  fill: none;
+  stroke: var(--ocre);
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  margin-bottom: .6rem;
+}
+.bolota h3 { font-size: 1.25rem; }
+.bolota p { margin: 0; color: var(--tinta-2); font-size: .98rem; }
+
+@media (max-width: 760px) {
+  .bolotas { grid-template-columns: 1fr; }
+  .bolota, .bolota:nth-child(odd), .bolota:nth-child(even) { transform: none; }
+}
+
+/* ------------------------------------------------------------- bilhete --- */
+
+.bilhete {
+  position: relative;
+  background: var(--papel-2);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 2.2rem 1.6rem 1.6rem;
+  box-shadow: var(--sombra);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1.2rem;
+  align-items: center;
+}
+.bilhete-aba {
+  position: absolute;
+  top: -.8rem;
+  inset-inline-start: 1.4rem;
+  background: var(--ocre);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: .72rem;
+  padding: .2rem .7rem;
+  border-radius: 999px;
+}
+.bilhete pre {
+  margin: 0;
+  overflow-x: auto;
+  background: var(--papel-3);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: .82rem;
+  line-height: 1.6;
+}
+.bilhete code { font-family: var(--mono); color: var(--tinta-2); }
+.c-k { color: var(--tinta-3); }
+.c-s { color: var(--azul); }
+.c-v { color: var(--musgo); }
+
+.bilhete-seta svg { width: 82px; height: 30px; fill: none; stroke: var(--terra); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+
+.bilhete-nota {
+  grid-column: 1 / -1;
+  margin: .4rem 0 0;
+  font-size: .95rem;
+  color: var(--tinta-2);
+}
+
+.bando-grade {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+.bando-grade h3 { font-size: 1.15rem; color: var(--azul); }
+.bando-grade p { margin: 0; color: var(--tinta-2); font-size: .96rem; }
+
+@media (max-width: 860px) {
+  .bilhete { grid-template-columns: 1fr; }
+  .bilhete-seta { justify-self: center; transform: rotate(90deg); }
+  .bando-grade { grid-template-columns: 1fr; gap: 1.4rem; }
+}
+
+/* --------------------------------------------------------------- fecho --- */
+
+.fecho {
+  max-width: var(--largura);
+  margin: 2rem auto 0;
+  padding: 5rem var(--gutter);
+  text-align: center;
+}
+.fecho h2 { font-size: clamp(1.9rem, 5vw, 3.2rem); }
+.fecho p { color: var(--tinta-3); font-size: 1.15rem; margin: 0 0 2rem; font-style: italic; }
+
+.rodape {
+  border-top: 1px solid var(--borda);
+  margin-top: 2rem;
+}
+
+.rodape-grade {
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 3rem var(--gutter) 2.2rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.rodape-col { display: flex; flex-direction: column; align-items: flex-start; gap: .55rem; }
+.rodape-col h2 {
+  font-size: .78rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-family: var(--texto);
+  font-weight: 600;
+  color: var(--tinta-3);
+  margin: 0 0 .3rem;
+}
+.rodape-col a { color: var(--tinta-2); text-decoration: none; font-size: .95rem; }
+.rodape-col a:hover { color: var(--azul); text-decoration: underline; }
+
+.rodape-legal {
+  border-top: 1px solid var(--borda);
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 1.8rem var(--gutter) 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .7rem;
+  text-align: center;
+}
+
+/* A Setbox só tem a marca numa versão, com o "Setbox" preto e a caixa vermelha.
+   Filtrar o PNG levaria o vermelho para salmão, então no papel escuro ela ganha
+   uma placa clara: a cor da marca fica exatamente a que é. */
+.rodape-marca {
+  display: inline-block;
+  border-radius: 8px;
+  padding: .45rem .7rem;
+  transition: background-color .2s ease;
+}
+.rodape-marca img { display: block; height: 28px; width: auto; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) .rodape-marca { background: #f4f2ee; }
+}
+:root[data-tema="escuro"] .rodape-marca { background: #f4f2ee; }
+
+.rodape-produto { margin: 0; font-size: .95rem; color: var(--tinta-2); }
+
+.rodape-cnpj {
+  margin: 0;
+  font-size: .82rem;
+  line-height: 1.6;
+  color: var(--tinta-3);
+}
+
+@media (max-width: 640px) {
+  .rodape-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem; padding-top: 2.4rem; }
+}
+
+/* -------------------------------------------------------------- motion --- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    transition-duration: .001ms !important;
+  }
+}
