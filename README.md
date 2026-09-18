@@ -122,17 +122,17 @@ não se recolore.
 ## Publicar
 
 O site é servido pelo **GitHub Pages**, no mesmo arranjo do `integramoda-site`:
-sem workflow, sem build, sem branch `gh-pages`. O Pages publica a raiz da branch
-`main` de [`setbox/jayio-site`](https://github.com/setbox/jayio-site) e o arquivo
-`CNAME` amarra o domínio.
+sem workflow, sem build, sem branch `gh-pages`. O Pages publica a raiz da
+branch `master` de [`setbox/jayio-site`](https://github.com/setbox/jayio-site)
+e o arquivo `CNAME` amarra o domínio.
 
 ```
 CNAME                   jayio.app
-Pages source            branch main, path /
+Pages source            branch master, path /
 HTTPS                   enforced (certificado emitido pelo próprio Pages)
 ```
 
-Publicar é dar `git push`: o Pages reconstrói a cada commit na `main`.
+Publicar é dar `git push`: o Pages reconstrói a cada commit na `master`.
 
 O DNS do apex precisa apontar para os endereços do Pages, e o app fica em um
 subdomínio próprio:
