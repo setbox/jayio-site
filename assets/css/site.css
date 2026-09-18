@@ -217,13 +217,19 @@ code { font-family: var(--mono); font-size: .88em; }
   flex-wrap: wrap;
 }
 
-/* O traço da logo é azul-marinho e some no papel escuro. Inverter e girar o
-   matiz devolve o azul do gaio em vez de virar laranja. */
+/* O traço da logo é azul-marinho e some no papel escuro. Em vez de inverter no
+   filtro, a versão escura é um arquivo próprio: o gaio segue azul e só a tinta
+   do nome clareia. */
 .marca img { display: block; height: 38px; width: auto; }
+.marca .marca-escuro { display: none; }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-tema="claro"]) .marca img { filter: invert(1) hue-rotate(180deg); }
+  :root:not([data-tema="claro"]) .marca .marca-claro { display: none; }
+  :root:not([data-tema="claro"]) .marca .marca-escuro { display: block; }
 }
-:root[data-tema="escuro"] .marca img { filter: invert(1) hue-rotate(180deg); }
+:root[data-tema="escuro"] .marca .marca-claro { display: none; }
+:root[data-tema="escuro"] .marca .marca-escuro { display: block; }
+:root[data-tema="claro"] .marca .marca-claro { display: block; }
+:root[data-tema="claro"] .marca .marca-escuro { display: none; }
 
 /* Sem menu, quem empurra as ações para a direita é a própria margem. */
 .topo-acoes {
