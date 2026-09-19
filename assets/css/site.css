@@ -351,10 +351,36 @@ code { font-family: var(--mono); font-size: .88em; }
   .abertura-fig figcaption { margin-top: 5.2rem; }
 }
 
+/* Em uma coluna a amostra continua pousada sobre a aquarela, na mesma diagonal
+   do desktop: é ela que mostra o produto, então não pode cair para depois da
+   ilustração. */
 @media (max-width: 900px) {
   .abertura { grid-template-columns: 1fr; gap: 2.2rem; margin-bottom: 2.5rem; }
-  .abertura-fig img { transform: none; }
-  .amostra { margin-top: 1.1rem; }
+  .amostra {
+    position: absolute;
+    left: .8rem;
+    bottom: -2.4rem;
+    width: min(20rem, 58%);
+    transform: rotate(-1.4deg);
+  }
+  /* o cartão avança para fora da imagem; a legenda desce o mesmo tanto */
+  .abertura-fig figcaption { margin-top: 3.6rem; }
+}
+
+/* No celular a imagem é bem mais baixa, então a lista encolhe para caber nela
+   em vez de cobrir o gaio. */
+@media (max-width: 620px) {
+  .amostra {
+    left: .6rem;
+    bottom: -2rem;
+    width: min(18rem, 76%);
+    font-size: .78rem;
+    padding: .55rem .6rem .6rem;
+  }
+  .amostra-cabeca { margin-bottom: .45rem; }
+  .amostra .pilha { gap: .4rem; }
+  .amostra .cartao { gap: .45rem; padding: .42rem .55rem; border-radius: 8px; }
+  .abertura-fig figcaption { margin-top: 3.2rem; }
 }
 
 /* ------------------------------------------------------------- a tela --- */
