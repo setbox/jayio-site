@@ -368,18 +368,25 @@ code { font-family: var(--mono); font-size: .88em; }
 }
 
 /* No celular a imagem é bem mais baixa, então a lista encolhe para caber nela
-   em vez de cobrir o gaio. */
+   em vez de cobrir o gaio. A largura é fixa, e não uma porcentagem: o texto dos
+   cartões tem tamanho fixo, então medir em % ou corta a tarefa no aparelho
+   estreito ou come o gaio no aparelho largo. */
 @media (max-width: 620px) {
   .amostra {
     left: .6rem;
     bottom: -2rem;
-    width: min(18rem, 76%);
-    font-size: .78rem;
+    width: min(15.5rem, calc(100% - 1.2rem));
+    font-size: .74rem;
     padding: .55rem .6rem .6rem;
   }
   .amostra-cabeca { margin-bottom: .45rem; }
   .amostra .pilha { gap: .4rem; }
-  .amostra .cartao { gap: .45rem; padding: .42rem .55rem; border-radius: 8px; }
+  /* o .cartao fixa o próprio tamanho de texto, então o corpo da amostra só
+     encolhe de verdade se a regra vier daqui; a etiqueta acompanha em em */
+  .amostra .cartao { gap: .4rem; padding: .4rem .5rem; border-radius: 8px; font-size: .78rem; }
+  .amostra .tag { font-size: .78em; padding: .02rem .32rem; }
+  .amostra .glifo-c { width: 13px; height: 13px; }
+  .amostra .periodo { width: 13px; height: 13px; }
   .abertura-fig figcaption { margin-top: 3.2rem; }
 }
 
