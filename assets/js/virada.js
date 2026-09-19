@@ -69,16 +69,16 @@
 
   var SEMENTE = [
     { id: "t1", txt: "Fechar o relatório do trimestre", bucket: "t", st: "s",  tipo: "p", periodo: "m", tags: ["trabalho"] },
-    { id: "t2", txt: "Responder o e-mail do Nildo",     bucket: "t", st: "c",  tipo: "p", tags: [] },
+    { id: "t2", txt: "Responder o e-mail do chefe",     bucket: "t", st: "c",  tipo: "p", tags: [] },
     { id: "t3", txt: "Comprar ração",                   bucket: "t", st: "u",  tipo: "o", periodo: "a", tags: ["casa"] },
     { id: "t4", txt: "Revisar o PR do time",            bucket: "t", st: "x",  tipo: "p", tags: [] },
-    { id: "t5", txt: "Marcar o dentista",               bucket: "t", st: "t",  tipo: "o", periodo: "m", tags: ["saúde"] },
+    { id: "t5", txt: "Agendar dentista",                bucket: "t", st: "t",  tipo: "o", periodo: "m", tags: ["saúde"] },
     { id: "t6", txt: "Estudar para a certificação",     bucket: "t", st: "b",  tipo: "o", periodo: "n", tags: ["estudo"] },
 
     { id: "b1", txt: "Trocar o pneu",                   bucket: "b", st: "u",  tipo: "o", periodo: "m", tags: ["carro"], data: "amanhã" },
     { id: "b2", txt: "Renovar o passaporte",            bucket: "b", st: "t",  tipo: "o", tags: [] },
     { id: "b3", txt: "Organizar as fotos",              bucket: "b", st: "u",  tipo: "o", tags: [] },
-    { id: "b4", txt: "Cancelar o seguro antigo",        bucket: "b", st: "u",  tipo: "p", tags: ["dinheiro"] },
+    { id: "b4", txt: "Concluir desenvolvimento",        bucket: "b", st: "u",  tipo: "p", tags: ["dinheiro"] },
 
     { id: "a1", txt: "Pagar o IPTU",                    bucket: "a", st: "c",  tipo: "o", tags: [] }
   ];

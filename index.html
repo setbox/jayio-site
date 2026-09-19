@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>jayio - o dia vira sozinho</title>
+<title>jayio - a lista de tarefas que se esvazia todo dia</title>
 <meta name="description" content="Gerenciador de tarefas em que o Hoje se esvazia à meia-noite do seu fuso. O que não foi feito volta para a reserva em vez de envelhecer no topo da lista.">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="jayio - o dia vira sozinho">
+<meta property="og:title" content="jayio - a lista de tarefas que se esvazia todo dia">
 <meta property="og:description" content="O Hoje não é uma lista que só cresce. À meia-noite do seu fuso ele se esvazia, e o que não foi feito volta para a reserva.">
 <meta property="og:image" content="https://jayio.app/assets/img/gaio-1200.webp">
 <meta property="og:url" content="https://jayio.app/">
@@ -56,19 +56,23 @@
 <!-- ─────────────────────────── ABERTURA ─────────────────────────── -->
 <section class="abertura">
   <div class="abertura-txt">
-    <p class="etiqueta">Gerenciador de tarefas &middot; Garrulus glandarius</p>
+    <p class="etiqueta etiqueta-capa">Gerenciador de tarefas <span>&middot; Garrulus glandarius</span></p>
 
     <h1>
-      O gaio enterra a bolota<br>
-      e <em>volta</em> para buscar.
+      Sua lista de hoje.<br>
+      E <em>só</em> a de hoje.
     </h1>
 
+    <p class="abertura-gaio">
+      O gaio enterra a bolota e volta para buscar. O jayio faz o mesmo com o seu
+      dia.
+    </p>
+
     <p class="linha-fina">
-      O jayio faz o mesmo com o seu dia: uma lista só, a de hoje. À meia-noite do
-      <strong>seu</strong> fuso ela se esvazia, o que ficou pela metade volta
-      para a reserva, o que você concluiu vai para o arquivo, o que estava
-      marcado para amanhã sobe. Nenhuma tarefa fica no topo da lista fingindo
-      ser urgente desde terça.
+      À meia-noite do <strong>seu</strong> fuso a lista se esvazia: o que ficou
+      pela metade volta para a reserva, o que você concluiu vai para o arquivo,
+      o que estava marcado para amanhã sobe. Nenhuma tarefa fica no topo
+      fingindo ser urgente desde terça.
     </p>
 
     <div class="abertura-btns">
@@ -77,17 +81,53 @@
     </div>
 
     <p class="miudo">
-      Web, em português e inglês. Tema claro e escuro. Sem cartão, sem plano, sem
-      &ldquo;fale com vendas&rdquo;.
+      Gratuito. Sem cartão, sem plano, sem &ldquo;fale com vendas&rdquo;.
     </p>
   </div>
 
   <figure class="abertura-fig">
+    <div class="abertura-cena">
     <picture>
       <source type="image/avif" srcset="assets/img/gaio-768.avif 768w, assets/img/gaio-1200.avif 1200w, assets/img/gaio-1600.avif 1600w" sizes="(max-width: 900px) 92vw, 46vw">
       <source type="image/webp" srcset="assets/img/gaio-768.webp 768w, assets/img/gaio-1200.webp 1200w, assets/img/gaio-1600.webp 1600w" sizes="(max-width: 900px) 92vw, 46vw">
       <img src="assets/img/gaio-1200.webp" width="1200" height="655" alt="Ilustração em aquarela de um gaio pousado num galho de carvalho, sobre um campo de flores." decoding="async">
     </picture>
+
+    <!-- A lista de verdade, com os ícones do app, encostada na aquarela: a
+         primeira tela precisa mostrar o produto, não só a metáfora. -->
+    <div class="amostra">
+      <div class="amostra-cabeca">
+        <span class="amostra-titulo">Hoje</span>
+        <span class="conta">4</span>
+      </div>
+
+      <ul class="pilha" aria-label="Exemplo de uma lista de hoje no jayio">
+        <li class="cartao" title="Profissional, iniciada">
+          <svg class="glifo glifo-c" aria-hidden="true"><use href="#g-ps"></use></svg>
+          <span class="cartao-txt">Fechar o relatório</span>
+          <svg class="periodo" aria-hidden="true"><use href="#p-m"></use></svg>
+          <span class="cartao-fim"><span class="tag">trabalho</span></span>
+        </li>
+        <li class="cartao risca" title="Profissional, concluída">
+          <svg class="glifo glifo-c" aria-hidden="true"><use href="#g-pc"></use></svg>
+          <span class="cartao-txt">Responder o chefe</span>
+          <span class="cartao-fim"></span>
+        </li>
+        <li class="cartao" title="Pessoal, não iniciada">
+          <svg class="glifo glifo-c" aria-hidden="true"><use href="#g-ou"></use></svg>
+          <span class="cartao-txt">Comprar ração</span>
+          <svg class="periodo" aria-hidden="true"><use href="#p-a"></use></svg>
+          <span class="cartao-fim"><span class="tag">casa</span></span>
+        </li>
+        <li class="cartao" title="Pessoal, para amanhã">
+          <svg class="glifo glifo-c" aria-hidden="true"><use href="#g-ot"></use></svg>
+          <span class="cartao-txt">Agendar dentista</span>
+          <span class="cartao-fim"><span class="tag">saúde</span></span>
+        </li>
+      </ul>
+    </div>
+    </div>
+
     <figcaption>
       O gaio esconde milhares de bolotas por outono. As que ele não desenterra
       viram carvalho. Reserva nenhuma é desperdício.
@@ -100,7 +140,7 @@
 <!-- ─────────────────────────── O CADERNO ─────────────────────────── -->
 <section id="caderno" class="secao">
   <div class="secao-cabeca">
-    <p class="etiqueta">Observação n.º 1</p>
+    <p class="etiqueta"><span>Observação n.º 1 &middot;</span> O método</p>
     <h2>A lista de um dia só</h2>
     <p class="secao-sub">
       O jayio não é onde você guarda tudo o que precisa fazer. É onde cabe o que
@@ -149,18 +189,39 @@
       isso que o Hoje amanhece vazio.
     </p>
   </div>
+
+  <!-- Print da tela Hoje rodando, uma arte por tema. -->
+  <figure class="app-fig">
+    <picture class="app-print app-print-claro">
+      <source type="image/avif" srcset="assets/img/app-claro-768.avif 768w, assets/img/app-claro-1200.avif 1200w, assets/img/app-claro-1600.avif 1600w" sizes="(max-width: 900px) 92vw, 64rem">
+      <source type="image/webp" srcset="assets/img/app-claro-768.webp 768w, assets/img/app-claro-1200.webp 1200w, assets/img/app-claro-1600.webp 1600w" sizes="(max-width: 900px) 92vw, 64rem">
+      <img src="assets/img/app-claro-1200.webp" width="1200" height="500" alt="A tela Hoje do jayio: seis tarefas numa lista só, cada uma com o ícone do seu tipo e estado, e as já resolvidas recuadas no fim." loading="lazy" decoding="async">
+    </picture>
+
+    <picture class="app-print app-print-escuro">
+      <source type="image/avif" srcset="assets/img/app-escuro-768.avif 768w, assets/img/app-escuro-1200.avif 1200w, assets/img/app-escuro-1600.avif 1600w" sizes="(max-width: 900px) 92vw, 64rem">
+      <source type="image/webp" srcset="assets/img/app-escuro-768.webp 768w, assets/img/app-escuro-1200.webp 1200w, assets/img/app-escuro-1600.webp 1600w" sizes="(max-width: 900px) 92vw, 64rem">
+      <img src="assets/img/app-escuro-1200.webp" width="1200" height="500" alt="A mesma tela Hoje do jayio, no tema escuro." loading="lazy" decoding="async">
+    </picture>
+
+    <figcaption>
+      A tela de todo dia, sem retoque. Uma lista, seis itens, e o ícone de cada
+      um contando em que pé a tarefa está. O que já foi resolvido desce e
+      desbota no fim. Nada de coluna, quadro ou painel: isso é o Hoje inteiro.
+    </figcaption>
+  </figure>
 </section>
 
 <hr class="fio" aria-hidden="true">
 
 <!-- ─────────────────────────── O GLIFO ─────────────────────────── -->
-<section id="glifo" class="secao">
+<section id="icone" class="secao">
   <div class="secao-cabeca">
-    <p class="etiqueta">Observação n.º 2</p>
+    <p class="etiqueta"><span>Observação n.º 2 &middot;</span> Tipo e status da tarefa</p>
     <h2>Um símbolo, dois eixos</h2>
     <p class="secao-sub">
       Tipo e status não são dois campos, são duas leituras do mesmo desenho. E no
-      formulário do jayio o glifo não ilustra o controle: ele <em>é</em> o
+      formulário do jayio o ícone não ilustra o controle: ele <em>é</em> o
       controle. Troque a forma e a régua inteira se redesenha.
     </p>
   </div>
@@ -217,7 +278,7 @@
 <!-- ─────────────────────────── A VIRADA ─────────────────────────── -->
 <section id="virada" class="secao">
   <div class="secao-cabeca">
-    <p class="etiqueta">Observação n.º 3</p>
+    <p class="etiqueta"><span>Observação n.º 3 &middot;</span> O que acontece à meia-noite</p>
     <h2>A virada</h2>
     <p class="secao-sub">
       Agora que o símbolo está lido, o quadro se explica sozinho. As quatro regras
@@ -284,7 +345,7 @@
 <!-- ─────────────────────────── A RESERVA ─────────────────────────── -->
 <section id="reserva" class="secao">
   <div class="secao-cabeca">
-    <p class="etiqueta">Observação n.º 4</p>
+    <p class="etiqueta"><span>Observação n.º 4 &middot;</span> O que não é para hoje</p>
     <h2>A reserva</h2>
     <p class="secao-sub">
       A reserva é onde a bolota fica até o dia de desenterrar.
@@ -328,7 +389,7 @@
 <!-- ─────────────────────────── O BANDO ─────────────────────────── -->
 <section id="bando" class="secao">
   <div class="secao-cabeca">
-    <p class="etiqueta">Observação n.º 5</p>
+    <p class="etiqueta"><span>Observação n.º 5 &middot;</span> API e MCP</p>
     <h2>O bando</h2>
     <p class="secao-sub">
       O jayio nasceu falando com agentes. O mesmo contexto que a tela usa está
@@ -397,9 +458,10 @@
   <div class="rodape-grade">
     <div class="rodape-col">
       <h2>jayio</h2>
-      <a href="#glifo">O glifo</a>
-      <a href="#virada">A virada</a>
-      <a href="#reserva">A reserva</a>
+      <a href="#caderno">O método, uma lista por dia</a>
+      <a href="#icone">O ícone, tipo e status</a>
+      <a href="#virada">A virada, à meia-noite</a>
+      <a href="#reserva">A reserva, o que não é de hoje</a>
     </div>
 
     <div class="rodape-col">
