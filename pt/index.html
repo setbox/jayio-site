@@ -194,19 +194,70 @@
     </p>
   </div>
 
-  <!-- Print da tela Hoje rodando, uma arte por tema. -->
+  <!-- A tela Hoje rodando, refeita em HTML para acompanhar o tema e o idioma da
+       página. Os glifos são os mesmos do sprite lá em cima. -->
   <figure class="app-fig">
-    <picture class="app-print app-print-claro">
-      <source type="image/avif" srcset="../assets/img/app-claro-768.avif 768w, ../assets/img/app-claro-1200.avif 1200w, ../assets/img/app-claro-1600.avif 1600w" sizes="(max-width: 900px) 92vw, 64rem">
-      <source type="image/webp" srcset="../assets/img/app-claro-768.webp 768w, ../assets/img/app-claro-1200.webp 1200w, ../assets/img/app-claro-1600.webp 1600w" sizes="(max-width: 900px) 92vw, 64rem">
-      <img src="../assets/img/app-claro-1200.webp" width="1200" height="500" alt="A tela Hoje do jayio: seis tarefas numa lista só, cada uma com o ícone do seu tipo e estado, e as já resolvidas recuadas no fim." loading="lazy" decoding="async">
-    </picture>
+    <div class="app-tela" role="img" aria-label="A tela Hoje do jayio: seis tarefas numa lista só, cada uma com o ícone do seu tipo e estado, e as já resolvidas recuadas no fim.">
+      <div class="app-barra" aria-hidden="true">
+        <span class="app-marca">
+          <img class="marca-claro" src="../assets/img/logo.png" alt="" width="258" height="99" loading="lazy" decoding="async">
+          <img class="marca-escuro" src="../assets/img/logo-dark.png" alt="" width="258" height="99" loading="lazy" decoding="async">
+        </span>
 
-    <picture class="app-print app-print-escuro">
-      <source type="image/avif" srcset="../assets/img/app-escuro-768.avif 768w, ../assets/img/app-escuro-1200.avif 1200w, ../assets/img/app-escuro-1600.avif 1600w" sizes="(max-width: 900px) 92vw, 64rem">
-      <source type="image/webp" srcset="../assets/img/app-escuro-768.webp 768w, ../assets/img/app-escuro-1200.webp 1200w, ../assets/img/app-escuro-1600.webp 1600w" sizes="(max-width: 900px) 92vw, 64rem">
-      <img src="../assets/img/app-escuro-1200.webp" width="1200" height="500" alt="A mesma tela Hoje do jayio, no tema escuro." loading="lazy" decoding="async">
-    </picture>
+        <nav class="app-nav"><span>Reserva</span><span class="app-nav-ativo">Hoje</span></nav>
+
+        <span class="app-barra-fim">
+          <svg class="app-icone"><use href="#p-n"></use></svg>
+          <svg class="app-icone app-icone-pontos" viewBox="0 0 24 24"><path d="M12 5h.01M12 12h.01M12 19h.01"/></svg>
+        </span>
+      </div>
+
+      <div class="app-corpo" aria-hidden="true">
+        <div class="app-cabeca">
+          <h3 class="app-titulo">Hoje</h3>
+          <span class="app-cabeca-fim">
+            <span class="app-filtros">
+              <svg class="app-icone" viewBox="0 0 24 24"><path d="M3 6h9M17 6h4M3 12h4M9 12h12M3 18h9M17 18h4"/><circle cx="14" cy="6" r="2"/><circle cx="6" cy="12" r="2"/><circle cx="14" cy="18" r="2"/></svg>
+              Filtros
+            </span>
+            <span class="app-btn">Nova tarefa</span>
+          </span>
+        </div>
+
+        <ul class="app-lista">
+          <li class="app-item">
+            <svg class="glifo glifo-c"><use href="#g-os"></use></svg>
+            <span class="app-item-txt">Estudar para a certificação<svg class="periodo"><use href="#p-n"></use></svg><small class="app-nota">esperando o material chegar</small></span>
+            <span class="tag">estudo</span>
+          </li>
+          <li class="app-item">
+            <svg class="glifo glifo-c"><use href="#g-ou"></use></svg>
+            <span class="app-item-txt">Comprar ração<svg class="periodo"><use href="#p-a"></use></svg></span>
+            <span class="tag">casa</span>
+          </li>
+          <li class="app-item">
+            <svg class="glifo glifo-c"><use href="#g-ps"></use></svg>
+            <span class="app-item-txt">Fechar o relatório do trimestre<svg class="periodo"><use href="#p-m"></use></svg></span>
+            <span class="tag">trabalho</span>
+          </li>
+          <li class="app-item app-item-ido">
+            <svg class="glifo glifo-c"><use href="#g-ot"></use></svg>
+            <span class="app-item-txt">Agendar dentista<svg class="periodo"><use href="#p-m"></use></svg></span>
+            <span class="tag">saúde</span>
+          </li>
+          <li class="app-item app-item-ido">
+            <svg class="glifo glifo-c"><use href="#g-px"></use></svg>
+            <span class="app-item-txt">Revisar o PR do time</span>
+          </li>
+          <li class="app-item app-item-ido">
+            <svg class="glifo glifo-c"><use href="#g-pc"></use></svg>
+            <span class="app-item-txt">Responder o e-mail do chefe</span>
+          </li>
+        </ul>
+
+        <p class="app-rodape">Você tem 6 tarefas para hoje</p>
+      </div>
+    </div>
 
     <figcaption>
       A tela de todo dia, sem retoque. Uma lista, seis itens, e o ícone de cada
@@ -449,7 +500,7 @@
   </div>
 
   <p class="miudo bando-nota">
-    A API e o MCP fazem parte do plano pro. <a href="precos.html">Ver os planos</a>.
+    Ligar um agente pela API ou pelo MCP faz parte do plano pro. <a href="precos.html">Ver os planos</a>.
   </p>
 </section>
 
