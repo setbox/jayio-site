@@ -872,6 +872,8 @@ code { font-family: var(--mono); font-size: .88em; }
   gap: 2rem;
   margin-top: 2.5rem;
 }
+.bando-nota { margin: 1.8rem 0 0; }
+
 .bando-grade h3 { font-size: 1.15rem; color: var(--azul); }
 .bando-grade p { margin: 0; color: var(--tinta-2); font-size: .96rem; }
 
@@ -958,6 +960,214 @@ code { font-family: var(--mono); font-size: .88em; }
 
 @media (max-width: 640px) {
   .rodape-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem; padding-top: 2.4rem; }
+}
+
+/* -------------------------------------------------------------- preços --- */
+
+/* Só o texto da legenda da tabela sai da tela: o leitor de tela precisa dela,
+   a página não, porque o título da seção já diz a mesma coisa. */
+.sr {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.precos-abertura {
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 3.4rem var(--gutter) 1rem;
+}
+.precos-abertura h1 { font-size: clamp(2.1rem, 5.4vw, 3.4rem); max-width: 20ch; }
+
+.secao-planos { padding-top: 2rem; }
+
+/* Sem `align-items: start`: os quatro cartões esticam até a altura do mais alto
+   da linha, e a sobra é absorvida pela lista, não distribuída entre tudo. */
+.planos {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+/* Mesma ficha de campo das bolotas: papel colado com uma inclinação mínima,
+   para a coluna não parecer um painel de SaaS. */
+.plano {
+  position: relative;
+  background: var(--papel-2);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 1.6rem 1.4rem;
+  box-shadow: var(--sombra);
+  display: flex;
+  flex-direction: column;
+}
+.plano:nth-child(odd) { transform: rotate(-.25deg); }
+.plano:nth-child(even) { transform: rotate(.2deg); }
+
+/* O destaque é traço e papel, não cor de fundo: o plano recomendado é o mesmo
+   cartão, só que anotado a caneta. */
+.plano-destaque {
+  border: 2px solid var(--azul);
+  background: var(--papel-2);
+}
+
+.plano-selo {
+  position: absolute;
+  top: -.75rem;
+  left: 1.2rem;
+  margin: 0;
+  font-family: var(--mao);
+  font-weight: 600;
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--papel);
+  background: var(--azul);
+  border-radius: 999px;
+  padding: .12rem .7rem;
+}
+
+.plano-nome {
+  font-size: 1.45rem;
+  margin: 0 0 .7rem;
+  color: var(--terra);
+}
+
+.plano-preco {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: .4rem;
+  flex-wrap: wrap;
+}
+.plano-valor {
+  font-family: var(--mao);
+  font-weight: 700;
+  font-size: 2.1rem;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+}
+.plano-por { font-size: .92rem; color: var(--tinta-3); }
+
+/* Duas linhas reservadas: o texto de cobrança do básico ocupa duas e os outros
+   uma, e sem a reserva o botão de cada cartão nasceria numa altura diferente. */
+.plano-ciclo {
+  margin: .35rem 0 0;
+  font-size: .86rem;
+  line-height: 1.45;
+  color: var(--tinta-3);
+  min-height: 2.9em;
+}
+
+.plano-btn { width: 100%; margin: 1.1rem 0 1.3rem; }
+
+.plano-lista {
+  list-style: none;
+  margin: 0;
+  padding: 1.2rem 0 0;
+  border-top: 1px dashed var(--borda-forte);
+  display: grid;
+  align-content: start;
+  flex: 1 1 auto;
+  gap: .6rem;
+  font-size: .95rem;
+}
+.plano-lista li {
+  display: flex;
+  align-items: flex-start;
+  gap: .55rem;
+  color: var(--tinta-2);
+}
+.plano-lista li strong { color: var(--tinta); font-weight: 600; }
+
+/* O sim e o não são os glifos do próprio app, concluída e cancelada. A página
+   fala o mesmo alfabeto que o produto, em vez de importar um check genérico. */
+.marca-sim { color: var(--musgo); margin-top: .34em; }
+.marca-nao { color: var(--tinta-3); margin-top: .34em; }
+
+.planos-rodape { max-width: 46rem; margin: 2.2rem auto 0; text-align: center; }
+
+@media (max-width: 1040px) {
+  .planos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .planos { grid-template-columns: 1fr; }
+  .plano, .plano:nth-child(odd), .plano:nth-child(even) { transform: none; }
+  .plano-ciclo { min-height: 0; }
+}
+
+/* ---------------------------------------------------------- comparativo -- */
+
+/* A rolagem lateral fica na caixa, não no corpo da página: em tela estreita a
+   tabela desliza sozinha e o resto do papel continua parado. */
+.tabela-caixa {
+  overflow-x: auto;
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  background: var(--papel-2);
+  box-shadow: var(--sombra);
+}
+
+.tabela-planos {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 42rem;
+  font-size: .95rem;
+}
+.tabela-planos th,
+.tabela-planos td {
+  padding: .8rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--borda);
+}
+.tabela-planos tbody tr:last-child th,
+.tabela-planos tbody tr:last-child td { border-bottom: 0; }
+
+.tabela-planos thead th {
+  font-family: var(--mao);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--terra);
+  border-bottom: 1px solid var(--borda-forte);
+  background: var(--papel-3);
+}
+.tabela-planos thead th:first-child { background: transparent; }
+
+.tabela-planos tbody th {
+  text-align: left;
+  font-family: var(--texto);
+  font-weight: 500;
+  color: var(--tinta-2);
+  white-space: nowrap;
+}
+
+.tabela-planos td { color: var(--tinta-2); }
+
+/* A coluna recomendada é a mesma da ficha acima, marcada por um papel um pouco
+   mais claro, sem repetir o selo. */
+.tabela-planos .col-destaque { background: color-mix(in oklab, var(--azul) 7%, transparent); }
+.tabela-planos thead .col-destaque { background: color-mix(in oklab, var(--azul) 14%, transparent); }
+
+@media (max-width: 760px) {
+  .tabela-planos { min-width: 36rem; font-size: .88rem; }
+  .tabela-planos th, .tabela-planos td { padding: .65rem .6rem; }
+}
+
+/* ----------------------------------------------------------- perguntas --- */
+
+.perguntas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.6rem 2.4rem;
+}
+.pergunta h3 { font-size: 1.12rem; margin: 0 0 .35rem; }
+.pergunta p { margin: 0; color: var(--tinta-2); font-size: .97rem; }
+
+@media (max-width: 760px) {
+  .perguntas { grid-template-columns: 1fr; gap: 1.4rem; }
 }
 
 /* -------------------------------------------------------------- motion --- */

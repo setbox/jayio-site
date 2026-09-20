@@ -236,7 +236,7 @@
 
   /* ------------------------------------------------------- as 4 regras -- */
 
-  // 1. Arquiva concluídas e canceladas.
+  // 1. Guarda concluídas e canceladas no histórico.
   function arquivarConcluidas() {
     return mover(function (t) {
       return t.bucket !== "a" && (t.st === "c" || t.st === "x");
