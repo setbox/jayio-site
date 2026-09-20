@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jayio - plans and pricing</title>
+<meta name="description" content="The free plan is the whole of jayio, no card and no deadline. The paid ones add more devices, a screen without ads, and the API with MCP.">
+
+<!-- Same language gate as the home page, pointing at the Portuguese pricing. -->
+<script>
+(function () {
+  try {
+    var escolha = localStorage.getItem("jayio-idioma");
+    if (escolha === "en") return;
+    if (escolha === "pt") { location.replace("pt/precos.html"); return; }
+    var l = (navigator.languages && navigator.languages[0]) || navigator.language || "";
+    if (/^pt\b/i.test(l)) location.replace("pt/precos.html");
+  } catch (e) {}
+})();
+</script>
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="jayio - plans and pricing">
+<meta property="og:description" content="The free plan is the whole of jayio, no card and no deadline. The paid ones add more devices, a screen without ads, and the API with MCP.">
+<meta property="og:image" content="https://jayio.app/assets/img/gaio-1200.webp">
+<meta property="og:url" content="https://jayio.app/pricing.html">
+<meta property="og:locale" content="en">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f5f1e6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#191b1f" media="(prefers-color-scheme: dark)">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<link rel="canonical" href="https://jayio.app/pricing.html">
+<link rel="alternate" hreflang="en" href="https://jayio.app/pricing.html">
+<link rel="alternate" hreflang="pt-BR" href="https://jayio.app/pt/precos.html">
+<link rel="alternate" hreflang="x-default" href="https://jayio.app/pricing.html">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><defs><symbol id="g-ou" viewBox="0 0 400 400"><circle cx="200" cy="200" r="194" fill="none"/></symbol><symbol id="g-oub" viewBox="0 0 400 400"><circle cx="200" cy="200" r="194" fill="none"/><path d="M62.57 61.96l276.57 276"/></symbol><symbol id="g-os" viewBox="0 0 400 400"><circle cx="200" cy="200" r="194" fill="none"/><path fill="currentColor" stroke="none" transform="rotate(135 200 200)" d="M6 200A194 194 0 0 0 394 200Z"/></symbol><symbol id="g-ob" viewBox="0 0 400 400"><circle cx="200" cy="200" r="194" fill="none"/><path fill="currentColor" stroke="none" transform="rotate(135 200 200)" d="M6 200A194 194 0 0 0 394 200Z"/><path d="M62.57 61.96l276.57 276"/></symbol><symbol id="g-ot" viewBox="0 0 400 400"><circle cx="200" cy="200" r="194" fill="none"/><path d="M116 196h148"/><path d="M221 152l43 47"/><path d="M264 194l-42 48"/></symbol><symbol id="g-oc" viewBox="0 0 400 400"><circle cx="200" cy="200" r="194" fill="currentColor"/></symbol><symbol id="g-ox" viewBox="0 0 400 400"><circle cx="200" cy="200" r="194" fill="none"/><path d="M62.57 61.96l276.57 276"/><path d="M338.57 62.54l-277.71 276"/></symbol><symbol id="g-pu" viewBox="0 0 400 400"><rect x="5" y="5" width="390" height="390" fill="none"/></symbol><symbol id="g-pub" viewBox="0 0 400 400"><rect x="5" y="5" width="390" height="390" fill="none"/><path d="M5 5l390 390"/></symbol><symbol id="g-ps" viewBox="0 0 400 400"><rect x="5" y="5" width="390" height="390" fill="none"/><path fill="currentColor" stroke="none" transform="rotate(90 200 200)" d="M5 395V5l390 390H5z"/></symbol><symbol id="g-pb" viewBox="0 0 400 400"><rect x="5" y="5" width="390" height="390" fill="none"/><path fill="currentColor" stroke="none" transform="rotate(90 200 200)" d="M5 395V5l390 390H5z"/><path d="M5 5l390 390"/></symbol><symbol id="g-pt" viewBox="0 0 400 400"><rect x="5" y="5" width="390" height="390" fill="none"/><path d="M116 196h148"/><path d="M221 152l43 47"/><path d="M264 194l-42 48"/></symbol><symbol id="g-pc" viewBox="0 0 400 400"><rect x="5" y="5" width="390" height="390" fill="currentColor"/></symbol><symbol id="g-px" viewBox="0 0 400 400"><rect x="5" y="5" width="390" height="390" fill="none"/><path d="M5 5l390 390"/><path d="M395 5L5 395"/></symbol><symbol id="p-m" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol><symbol id="p-a" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol><symbol id="p-n" viewBox="0 0 24 24"><path d="M21 13a8.5 8.5 0 1 1-10-10 7 7 0 0 0 10 10z"/></symbol></defs></svg>
+
+<a class="pular" href="#plans">Skip to the plans</a>
+
+<!-- field note: header -->
+<header class="topo">
+  <a class="marca" href="index.html" aria-label="jayio, home">
+    <img class="marca-claro" src="assets/img/logo.png" alt="" width="258" height="99" decoding="async">
+    <img class="marca-escuro" src="assets/img/logo-dark.png" alt="" width="258" height="99" decoding="async">
+  </a>
+
+  <div class="topo-acoes">
+    <a class="btn-idioma" href="pt/precos.html" data-idioma="pt" hreflang="pt-BR" lang="pt-BR">Português</a>
+    <button type="button" class="btn-tema" data-tema-toggle aria-pressed="false">
+      <span class="btn-tema-txt">Darken</span>
+    </button>
+    <a class="btn btn-fantasma" href="pricing.html" aria-current="page">Pricing</a>
+    <a class="btn btn-primario" href="https://app.jayio.app">Sign in</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ─────────────────────────── OPENING ─────────────────────────── -->
+<section class="precos-abertura">
+  <p class="etiqueta"><span>Price card &middot;</span> The plans</p>
+  <h1>The whole of jayio, free.</h1>
+  <p class="linha-fina">
+    The midnight turnover, the backlog, the two axes of the symbol, the periods
+    and the labels: all of that is the free plan, no card and no deadline to run
+    out. The paid plans come later, when you want jayio on more than one device,
+    without ads, or talking to your agents.
+  </p>
+</section>
+
+<!-- ─────────────────────────── THE PLANS ─────────────────────────── -->
+<section id="plans" class="secao secao-planos">
+
+  <div class="planos">
+
+    <article class="plano">
+      <h2 class="plano-nome">free</h2>
+      <p class="plano-preco"><span class="plano-valor">US$ 0</span></p>
+      <p class="plano-ciclo">forever, no card</p>
+
+      <a class="btn btn-fantasma plano-btn" href="https://app.jayio.app">Start</a>
+
+      <ul class="plano-lista">
+        <li><svg class="glifo glifo-p marca-sim" aria-hidden="true"><use href="#g-oc"></use></svg> <span>With a limit on items</span></li>
+        <li><svg class="glifo glifo-p marca-sim" aria-hidden="true"><use href="#g-oc"></use></svg> <span>One connected device</span></li>
+        <li><svg class="glifo glifo-p marca-sim" aria-hidden="true"><use href="#g-oc"></use></svg> <span>Archive of the last 30 days</span></li>
+      </ul>
+
+    </article>
+
+    <article class="plano">
+      <h2 class="plano-nome">basic</h2>
+      <p class="plano-preco"><span class="plano-valor">US$ 1</span><span class="plano-por">a month</span></p>
+      <p class="plano-ciclo">billed US$ 12 once a year, no monthly option</p>
+
+      <a class="btn btn-fantasma plano-btn" href="https://app.jayio.app">Subscribe</a>
+
+      <ul class="plano-lista">
+        <li><svg class="glifo glifo-p marca-sim" aria-hidden="true"><use href="#g-oc"></use></svg> <span>Everything in free</span></li>
+        <li><svg class="glifo glifo-p marca-sim" aria-hidden="true"><use href="#g-oc"></use></svg> <span><strong>No limit on items</strong></span></li>
+        <li><svg class="glifo glifo-p marca-sim" aria-hidden="true"><use href="#g-oc"></use></svg> <span><strong>Two devices</strong></span></li>
+        <li><svg class="glifo glifo-p marca-sim" aria-hidden="true"><use href="#g-oc"></use></svg> <span><strong>Full archive</strong></span></li>
+      </ul>
+
+    </article>
+
+    <article class="plano plano-destaque">
+      <p class="plano-selo">recommended</p>
+      <h2 class="plano-nome">plus</h2>
+      <p class="plano-preco"><span class="plano-valor">US$ 2.99</span><span class="plano-por">a month</span></p>
+      <p class="plano-ciclo">or US$ 25 a year, 30% cheaper</p>
+
+      <a class="btn btn-primario plano-btn" href="https://app.jayio.app">Subscribe</a>
+
+      <ul class="plano-lista">
+        <li><svg class="glifo glifo-p marca-sim" aria-hidden="true"><use href="#g-oc"></use></svg> <span>Everything in basic</span></li>
+        <li><svg class="glifo glifo-p marca-sim" aria-hidden="true"><use href="#g-oc"></use></svg> <span>No limit on items</span></li>
+        <li><svg class="glifo glifo-p marca-sim" aria-hidden="true"><use href="#g-oc"></use></svg> <span><strong>Three devices</strong></span></li>
+        <li><svg class="glifo glifo-p marca-sim" aria-hidden="true"><use href="#g-oc"></use></svg> <span>Full archive</span></li>
+        <li><svg class="glifo glifo-p marca-sim" aria-hidden="true"><use href="#g-oc"></use></svg> <span><strong>No ads at all</strong></span></li>
+      </ul>
+
+    </article>
+
+    <article class="plano">
+      <h2 class="plano-nome">pro</h2>
+      <p class="plano-preco"><span class="plano-valor">US$ 9</span><span class="plano-por">a month</span></p>
+      <p class="plano-ciclo">or US$ 79 a year, 27% cheaper</p>
+
+      <a class="btn btn-fantasma plano-btn" href="https://app.jayio.app">Subscribe</a>
+
+      <ul class="plano-lista">
+        <li><svg class="glifo glifo-p marca-sim" aria-hidden="true"><use href="#g-oc"></use></svg> <span>Everything in plus</span></li>
+        <li><svg class="glifo glifo-p marca-sim" aria-hidden="true"><use href="#g-oc"></use></svg> <span>No limit on items</span></li>
+        <li><svg class="glifo glifo-p marca-sim" aria-hidden="true"><use href="#g-oc"></use></svg> <span><strong>Ten devices</strong></span></li>
+        <li><svg class="glifo glifo-p marca-sim" aria-hidden="true"><use href="#g-oc"></use></svg> <span>Full archive</span></li>
+        <li><svg class="glifo glifo-p marca-sim" aria-hidden="true"><use href="#g-oc"></use></svg> <span>No ads</span></li>
+        <li><svg class="glifo glifo-p marca-sim" aria-hidden="true"><use href="#g-oc"></use></svg> <span><strong>API and MCP, with token and scopes</strong></span></li>
+      </ul>
+
+    </article>
+
+  </div>
+
+  <p class="planos-rodape miudo">
+    Prices in dollars. The figure in focus is the monthly one. Paying for the
+    year at once costs less, and on basic it is the only way. Changing plan or
+    cancelling takes effect right away, and nothing you wrote is deleted when a
+    subscription ends.
+  </p>
+</section>
+
+<hr class="fio" aria-hidden="true">
+
+<!-- ─────────────────────────── THE COMPARISON ─────────────────────────── -->
+<section id="comparison" class="secao">
+  <div class="secao-cabeca">
+    <p class="etiqueta"><span>Side by side &middot;</span> The comparison</p>
+    <h2>What changes from one to the next</h2>
+    <p class="secao-sub">
+      Each step removes one limit and nothing else. None of this is a different
+      screen: jayio is the same on every plan.
+    </p>
+  </div>
+
+  <div class="tabela-caixa">
+    <table class="tabela-planos">
+      <caption class="sr">Comparison of the four jayio plans</caption>
+      <thead>
+        <tr>
+          <th scope="col">&nbsp;</th>
+          <th scope="col">free</th>
+          <th scope="col">basic</th>
+          <th scope="col" class="col-destaque">plus</th>
+          <th scope="col">pro</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Items in the Today list</th>
+          <td>8 a day</td>
+          <td>no limit</td>
+          <td class="col-destaque">no limit</td>
+          <td>no limit</td>
+        </tr>
+        <tr>
+          <th scope="row">Items in the Backlog list</th>
+          <td>no limit</td>
+          <td>no limit</td>
+          <td class="col-destaque">no limit</td>
+          <td>no limit</td>
+        </tr>
+        <tr>
+          <th scope="row">Connected devices</th>
+          <td>1</td>
+          <td>2</td>
+          <td class="col-destaque">3</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <th scope="row">Ads</th>
+          <td>yes</td>
+          <td>light</td>
+          <td class="col-destaque">no</td>
+          <td>no</td>
+        </tr>
+        <tr>
+          <th scope="row">Archive of completed tasks</th>
+          <td>30 days</td>
+          <td>full</td>
+          <td class="col-destaque">full</td>
+          <td>full</td>
+        </tr>
+        <tr>
+          <th scope="row">The midnight turnover</th>
+          <td><svg class="glifo glifo-p marca-sim" role="img" aria-label="yes"><use href="#g-oc"></use></svg></td>
+          <td><svg class="glifo glifo-p marca-sim" role="img" aria-label="yes"><use href="#g-oc"></use></svg></td>
+          <td class="col-destaque"><svg class="glifo glifo-p marca-sim" role="img" aria-label="yes"><use href="#g-oc"></use></svg></td>
+          <td><svg class="glifo glifo-p marca-sim" role="img" aria-label="yes"><use href="#g-oc"></use></svg></td>
+        </tr>
+        <tr>
+          <th scope="row">Labels, periods and types</th>
+          <td><svg class="glifo glifo-p marca-sim" role="img" aria-label="yes"><use href="#g-oc"></use></svg></td>
+          <td><svg class="glifo glifo-p marca-sim" role="img" aria-label="yes"><use href="#g-oc"></use></svg></td>
+          <td class="col-destaque"><svg class="glifo glifo-p marca-sim" role="img" aria-label="yes"><use href="#g-oc"></use></svg></td>
+          <td><svg class="glifo glifo-p marca-sim" role="img" aria-label="yes"><use href="#g-oc"></use></svg></td>
+        </tr>
+        <tr>
+          <th scope="row">REST API and MCP</th>
+          <td><svg class="glifo glifo-p marca-nao" role="img" aria-label="no"><use href="#g-ox"></use></svg></td>
+          <td><svg class="glifo glifo-p marca-nao" role="img" aria-label="no"><use href="#g-ox"></use></svg></td>
+          <td class="col-destaque"><svg class="glifo glifo-p marca-nao" role="img" aria-label="no"><use href="#g-ox"></use></svg></td>
+          <td><svg class="glifo glifo-p marca-sim" role="img" aria-label="yes"><use href="#g-oc"></use></svg></td>
+        </tr>
+        <tr>
+          <th scope="row">Billing</th>
+          <td>none</td>
+          <td>yearly</td>
+          <td class="col-destaque">monthly or yearly</td>
+          <td>monthly or yearly</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="fio" aria-hidden="true">
+
+<!-- ─────────────────────────── THE QUESTIONS ─────────────────────────── -->
+<section id="questions" class="secao">
+  <div class="secao-cabeca">
+    <p class="etiqueta"><span>At the foot of the page &middot;</span> The questions</p>
+    <h2>What people usually ask</h2>
+  </div>
+
+  <div class="perguntas">
+    <div class="pergunta">
+      <h3>What happens when the Today list fills up on the free plan?</h3>
+      <p>
+        Nothing locks. You write the ninth item as usual, it lands in the backlog
+        instead of Today, and jayio says why. Losing what you just typed would be
+        the worst possible way to ask for money, so it does not happen.
+      </p>
+    </div>
+
+    <div class="pergunta">
+      <h3>Why does basic still show ads?</h3>
+      <p>
+        Because that is what makes one dollar a month possible. If ads do not
+        bother you, this is the best deal on the page. If they do, plus exists for
+        exactly that, and it is the only difference between the two.
+      </p>
+    </div>
+
+    <div class="pergunta">
+      <h3>Why is basic billed only once a year?</h3>
+      <p>
+        The fixed card fee eats almost a quarter of a one dollar charge. Billed
+        once a year the price holds up, and you pay less than you would spreading
+        it out.
+      </p>
+    </div>
+
+    <div class="pergunta">
+      <h3>Is there a trial?</h3>
+      <p>
+        The free plan is the trial, and it does not expire. A trial with a
+        deadline takes away what you were already using, and that is worse than
+        never having had it.
+      </p>
+    </div>
+
+    <div class="pergunta">
+      <h3>What counts as a device?</h3>
+      <p>
+        Every browser or phone where you stay signed in. Signing out of one frees
+        the slot straight away, so moving between machines costs nothing, and
+        nothing is blocked for being open somewhere else.
+      </p>
+    </div>
+
+    <div class="pergunta">
+      <h3>What if I cancel?</h3>
+      <p>
+        The subscription runs to the end of the period you paid for and then the
+        account goes back to free. Your tasks all stay, including the ones past
+        the eighth item of the day: they sit in the backlog.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────── CLOSING ─────────────────────────── -->
+<section class="fecho">
+  <h2>Start free. The day turns just the same.</h2>
+  <p>The midnight turnover is not a paid feature.</p>
+  <a class="btn btn-primario btn-g" href="https://app.jayio.app">Open jayio</a>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <div class="rodape-grade">
+    <div class="rodape-col">
+      <h2>jayio</h2>
+      <a href="index.html#method">The method, one list a day</a>
+      <a href="index.html#icon">The icon, type and status</a>
+      <a href="index.html#turnover">The turnover, at midnight</a>
+      <a href="index.html#backlog">The backlog, what is not for today</a>
+    </div>
+
+    <div class="rodape-col">
+      <h2>Product</h2>
+      <a href="pricing.html">Plans and pricing</a>
+      <a href="index.html#flock">API and MCP</a>
+      <a href="https://app.jayio.app">Sign in</a>
+    </div>
+
+    <div class="rodape-col">
+      <h2>Company</h2>
+      <a href="https://setbox.com.br">Setbox</a>
+      <a href="pt/precos.html" data-idioma="pt" hreflang="pt-BR" lang="pt-BR">Português</a>
+    </div>
+  </div>
+
+  <div class="rodape-legal">
+    <a class="rodape-marca" href="https://setbox.com.br" aria-label="Setbox">
+      <img src="assets/img/setbox.png" alt="Setbox" width="420" height="139" loading="lazy" decoding="async">
+    </a>
+
+    <p class="rodape-produto">jayio is a Setbox product.</p>
+
+    <p class="rodape-cnpj">
+      © 2026 Setbox Serviços Digitais&middot;CNPJ 08.889.601/0001-09<br>
+      Av. Carneiro Leão, 563 - Zona 01, Maringá / PR - 87014-010
+    </p>
+  </div>
+</footer>
+
+<script src="assets/js/virada.js" defer></script>
+</body>
+</html>

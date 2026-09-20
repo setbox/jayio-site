@@ -209,6 +209,19 @@ code { font-family: var(--mono); font-size: .88em; }
 }
 .btn-tema:hover { color: var(--tinta); }
 
+/* O trocador de idioma tem o mesmo peso do botão de tema: é ajuste de leitura,
+   não ação de produto, e não disputa com Preços nem com Entrar. */
+.btn-idioma {
+  color: var(--tinta-3);
+  font-family: var(--texto);
+  font-size: .875rem;
+  padding: .4rem .5rem;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+  text-decoration-style: dotted;
+}
+.btn-idioma:hover { color: var(--tinta); }
+
 /* ---------------------------------------------------------------- topo --- */
 
 .topo {

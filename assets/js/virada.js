@@ -11,6 +11,98 @@
 
   var calmo = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ----------------------------------------------------------- idioma --- */
+
+  /* O site tem uma árvore de arquivos por idioma, então quem manda aqui é o
+     `lang` do documento, não o navegador: a página em /pt/ fala português mesmo
+     para quem chegou nela de propósito com o navegador em inglês. */
+
+  var TEXTOS = {
+    pt: {
+      tema: { claro: "Escurecer", escuro: "Clarear" },
+      rotulo: {
+        u: "Não iniciada",
+        ub: "Não iniciada, bloqueada",
+        s: "Iniciada",
+        b: "Bloqueada",
+        t: "Para amanhã",
+        c: "Concluída",
+        x: "Cancelada"
+      },
+      tipo: { o: "Pessoal", p: "Profissional" },
+      periodo: { m: "Manhã", a: "Tarde", n: "Noite" },
+      tarefas: {
+        t1: { txt: "Fechar o relatório do trimestre", tags: ["trabalho"] },
+        t2: { txt: "Responder o e-mail do chefe" },
+        t3: { txt: "Comprar ração", tags: ["casa"] },
+        t4: { txt: "Revisar o PR do time" },
+        t5: { txt: "Agendar dentista", tags: ["saúde"] },
+        t6: { txt: "Estudar para a certificação", tags: ["estudo"] },
+        b1: { txt: "Trocar o pneu", tags: ["carro"], data: "amanhã" },
+        b2: { txt: "Renovar o passaporte" },
+        b3: { txt: "Organizar as fotos" },
+        b4: { txt: "Concluir desenvolvimento", tags: ["dinheiro"] },
+        a1: { txt: "Pagar o IPTU" }
+      },
+      saldo: { nenhuma: "nenhuma", uma: "1 tarefa", varias: " tarefas" },
+      passos: [
+        "Concluída e cancelada saem de cena: viram histórico, não peso.",
+        "O que sobrou do Hoje volta à reserva e ao estado inicial. Ninguém carrega culpa de ontem.",
+        "“Para amanhã” virou hoje. Sobe limpa, como se tivesse acabado de ser escrita.",
+        "A bolota enterrada com data chegou ao dia. Sobe e perde a data, para não subir de novo amanhã."
+      ],
+      fim: "Fim. O Hoje recomeça com três tarefas escolhidas, não com a sobra de ontem.",
+      inicio: "Três cartões estão marcados para amanhã ou agendados. Repare para onde eles vão."
+    },
+
+    en: {
+      tema: { claro: "Darken", escuro: "Lighten" },
+      rotulo: {
+        u: "Not started",
+        ub: "Unstarted blocked",
+        s: "Started",
+        b: "Blocked",
+        t: "For tomorrow",
+        c: "Completed",
+        x: "Cancelled"
+      },
+      tipo: { o: "Personal", p: "Professional" },
+      periodo: { m: "Morning", a: "Afternoon", n: "Night" },
+      tarefas: {
+        t1: { txt: "Close the quarterly report", tags: ["work"] },
+        t2: { txt: "Reply to the boss" },
+        t3: { txt: "Buy pet food", tags: ["home"] },
+        t4: { txt: "Review the team PR" },
+        t5: { txt: "Book the dentist", tags: ["health"] },
+        t6: { txt: "Study for the certification", tags: ["study"] },
+        b1: { txt: "Change the tyre", tags: ["car"], data: "tomorrow" },
+        b2: { txt: "Renew the passport" },
+        b3: { txt: "Sort out the photos" },
+        b4: { txt: "Finish the build", tags: ["money"] },
+        a1: { txt: "Pay the council tax" }
+      },
+      saldo: { nenhuma: "none", uma: "1 task", varias: " tasks" },
+      passos: [
+        "Completed and cancelled leave the stage: they become archive, not weight.",
+        "Whatever is left of Today goes back to the backlog and to its starting state. Nobody carries yesterday's guilt.",
+        "“For tomorrow” just became today. It moves up clean, as if it had only now been written.",
+        "The acorn buried with a date reached its day. It moves up and loses the date, so it is not promoted again tomorrow."
+      ],
+      fim: "That is it. Today starts again with three chosen tasks, not with what was left of yesterday.",
+      inicio: "Three cards are marked for tomorrow or scheduled. Watch where they go."
+    }
+  };
+
+  var T = /^pt\b/i.test(document.documentElement.lang || "") ? TEXTOS.pt : TEXTOS.en;
+
+  /* A escolha de idioma é lembrada aqui, e é ela que o portão no <head> das
+     páginas em inglês consulta antes de olhar o navegador. */
+  Array.prototype.forEach.call(document.querySelectorAll("[data-idioma]"), function (a) {
+    a.addEventListener("click", function () {
+      try { localStorage.setItem("jayio-idioma", a.getAttribute("data-idioma")); } catch (e) {}
+    });
+  });
+
   /* ------------------------------------------------------------- tema --- */
 
   var alvoTema = document.querySelector("[data-tema-toggle]");
@@ -34,7 +126,7 @@
     var escuro = escuroAgora();
     alvoTema.setAttribute("aria-pressed", String(escuro));
     var txt = alvoTema.querySelector(".btn-tema-txt");
-    if (txt) txt.textContent = escuro ? "Clarear" : "Escurecer";
+    if (txt) txt.textContent = escuro ? T.tema.escuro : T.tema.claro;
   }
 
   var salvo = lerTema();
@@ -68,20 +160,26 @@
   if (!quadro) return;
 
   var SEMENTE = [
-    { id: "t1", txt: "Fechar o relatório do trimestre", bucket: "t", st: "s",  tipo: "p", periodo: "m", tags: ["trabalho"] },
-    { id: "t2", txt: "Responder o e-mail do chefe",     bucket: "t", st: "c",  tipo: "p", tags: [] },
-    { id: "t3", txt: "Comprar ração",                   bucket: "t", st: "u",  tipo: "o", periodo: "a", tags: ["casa"] },
-    { id: "t4", txt: "Revisar o PR do time",            bucket: "t", st: "x",  tipo: "p", tags: [] },
-    { id: "t5", txt: "Agendar dentista",                bucket: "t", st: "t",  tipo: "o", periodo: "m", tags: ["saúde"] },
-    { id: "t6", txt: "Estudar para a certificação",     bucket: "t", st: "b",  tipo: "o", periodo: "n", tags: ["estudo"] },
+    { id: "t1", bucket: "t", st: "s",  tipo: "p", periodo: "m" },
+    { id: "t2", bucket: "t", st: "c",  tipo: "p" },
+    { id: "t3", bucket: "t", st: "u",  tipo: "o", periodo: "a" },
+    { id: "t4", bucket: "t", st: "x",  tipo: "p" },
+    { id: "t5", bucket: "t", st: "t",  tipo: "o", periodo: "m" },
+    { id: "t6", bucket: "t", st: "b",  tipo: "o", periodo: "n" },
 
-    { id: "b1", txt: "Trocar o pneu",                   bucket: "b", st: "u",  tipo: "o", periodo: "m", tags: ["carro"], data: "amanhã" },
-    { id: "b2", txt: "Renovar o passaporte",            bucket: "b", st: "t",  tipo: "o", tags: [] },
-    { id: "b3", txt: "Organizar as fotos",              bucket: "b", st: "u",  tipo: "o", tags: [] },
-    { id: "b4", txt: "Concluir desenvolvimento",        bucket: "b", st: "u",  tipo: "p", tags: ["dinheiro"] },
+    { id: "b1", bucket: "b", st: "u",  tipo: "o", periodo: "m" },
+    { id: "b2", bucket: "b", st: "t",  tipo: "o" },
+    { id: "b3", bucket: "b", st: "u",  tipo: "o" },
+    { id: "b4", bucket: "b", st: "u",  tipo: "p" },
 
-    { id: "a1", txt: "Pagar o IPTU",                    bucket: "a", st: "c",  tipo: "o", tags: [] }
-  ];
+    { id: "a1", bucket: "a", st: "c",  tipo: "o" }
+  ].map(function (t) {
+    var texto = T.tarefas[t.id];
+    t.txt = texto.txt;
+    t.tags = texto.tags || [];
+    if (texto.data) t.data = texto.data;
+    return t;
+  });
 
   var tarefas = [];
   var rodando = false;
@@ -167,18 +265,9 @@
     });
   }
 
-  var ROTULO = {
-    u: "Não iniciada",
-    ub: "Não iniciada, bloqueada",
-    s: "Iniciada",
-    b: "Bloqueada",
-    t: "Para amanhã",
-    c: "Concluída",
-    x: "Cancelada"
-  };
-
-  var TIPO = { o: "Pessoal", p: "Profissional" };
-  var PERIODO = { m: "Manhã", a: "Tarde", n: "Noite" };
+  var ROTULO = T.rotulo;
+  var TIPO = T.tipo;
+  var PERIODO = T.periodo;
 
   function desenhar() {
     ["t", "b", "a"].forEach(function (bucket) {
@@ -298,14 +387,14 @@
     if (!li) return;
     li.classList.add("acesa");
     var alvo = li.querySelector(".regra-saldo");
-    if (alvo) alvo.textContent = saldo ? (saldo === 1 ? "1 tarefa" : saldo + " tarefas") : "nenhuma";
+    if (alvo) alvo.textContent = saldo ? (saldo === 1 ? T.saldo.uma : saldo + T.saldo.varias) : T.saldo.nenhuma;
   }
 
   var PASSOS = [
-    { n: 1, fn: arquivarConcluidas, nota: "Concluída e cancelada saem de cena: viram histórico, não peso." },
-    { n: 2, fn: devolverAReserva,   nota: "O que sobrou do Hoje volta à reserva e ao estado inicial. Ninguém carrega culpa de ontem." },
-    { n: 3, fn: promoverAmanha,     nota: "“Para amanhã” virou hoje. Sobe limpa, como se tivesse acabado de ser escrita." },
-    { n: 4, fn: soltarAgendadas,    nota: "A bolota enterrada com data chegou ao dia. Sobe e perde a data, para não subir de novo amanhã." }
+    { n: 1, fn: arquivarConcluidas, nota: T.passos[0] },
+    { n: 2, fn: devolverAReserva,   nota: T.passos[1] },
+    { n: 3, fn: promoverAmanha,     nota: T.passos[2] },
+    { n: 4, fn: soltarAgendadas,    nota: T.passos[3] }
   ];
 
   async function virar() {
@@ -332,8 +421,7 @@
     }
 
     if (elNota) {
-      elNota.textContent =
-        "Fim. O Hoje recomeça com três tarefas escolhidas, não com a sobra de ontem.";
+      elNota.textContent = T.fim;
     }
 
     btnVoltar.hidden = false;
@@ -348,8 +436,7 @@
     btnVirar.disabled = false;
     btnVoltar.hidden = true;
     if (elNota) {
-      elNota.textContent =
-        "Três cartões estão marcados para amanhã ou agendados. Repare para onde eles vão.";
+      elNota.textContent = T.inicio;
     }
     comAnimacao(semear);
     todosOsCartoes().forEach(function (el) { el.classList.remove("mexeu"); });
