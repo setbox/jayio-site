@@ -121,12 +121,19 @@
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   }
 
+  /* O ícone quem troca é o CSS, pela mesma condição que troca as cores, então
+     aqui só o nome da ação muda. Ele está fora da tela e é o que o leitor de
+     tela anuncia, e vai junto para o `title`, para quem usa o mouse. */
   function pintarBotaoTema() {
     if (!alvoTema) return;
     var escuro = escuroAgora();
+    var nome = escuro ? T.tema.escuro : T.tema.claro;
+
     alvoTema.setAttribute("aria-pressed", String(escuro));
+    alvoTema.setAttribute("title", nome);
+
     var txt = alvoTema.querySelector(".btn-tema-txt");
-    if (txt) txt.textContent = escuro ? T.tema.escuro : T.tema.claro;
+    if (txt) txt.textContent = nome;
   }
 
   var salvo = lerTema();

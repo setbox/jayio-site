@@ -62,7 +62,9 @@
   <div class="topo-acoes">
     <a class="btn-idioma" href="pt/precos.html" data-idioma="pt" hreflang="pt-BR" lang="pt-BR">Português</a>
     <button type="button" class="btn-tema" data-tema-toggle aria-pressed="false">
-      <span class="btn-tema-txt">Darken</span>
+      <svg class="ico-tema ico-lua" aria-hidden="true"><use href="#p-n"></use></svg>
+      <svg class="ico-tema ico-sol" aria-hidden="true"><use href="#p-m"></use></svg>
+      <span class="sr btn-tema-txt">Darken</span>
     </button>
     <a class="btn btn-fantasma" href="pricing.html" aria-current="page">Pricing</a>
     <a class="btn btn-primario" href="https://app.jayio.app">Sign in</a>
@@ -76,8 +78,8 @@
   <p class="etiqueta"><span>Price card &middot;</span> The plans</p>
   <h1>The whole of jayio, free.</h1>
   <p class="linha-fina">
-    The midnight turnover, the backlog, the two axes of the symbol, the periods
-    and the labels: all of that is the free plan, no card and no deadline to run
+    The automatic cleanup of your main list, the symbols, the periods and the
+    labels: all of that is the free plan, no card and no deadline to run
     out. The paid plans come later, when you want jayio on more than one device,
     without ads, or talking to your agents.
   </p>
@@ -159,176 +161,16 @@
 
   <p class="planos-rodape miudo">
     Prices in dollars. The figure in focus is the monthly one. Paying for the
-    year at once costs less, and on basic it is the only way. Changing plan or
-    cancelling takes effect right away, and nothing you wrote is deleted when a
-    subscription ends.
+    year at once costs less, and on basic it is the only way. The free and basic
+    plans show ads. Changing plan or cancelling takes effect right away, and
+    nothing you wrote is deleted when a subscription ends.
   </p>
-</section>
-
-<hr class="fio" aria-hidden="true">
-
-<!-- ─────────────────────────── THE COMPARISON ─────────────────────────── -->
-<section id="comparison" class="secao">
-  <div class="secao-cabeca">
-    <p class="etiqueta"><span>Side by side &middot;</span> The comparison</p>
-    <h2>What changes from one to the next</h2>
-    <p class="secao-sub">
-      Each step removes one limit and nothing else. None of this is a different
-      screen: jayio is the same on every plan.
-    </p>
-  </div>
-
-  <div class="tabela-caixa">
-    <table class="tabela-planos">
-      <caption class="sr">Comparison of the four jayio plans</caption>
-      <thead>
-        <tr>
-          <th scope="col">&nbsp;</th>
-          <th scope="col">free</th>
-          <th scope="col">basic</th>
-          <th scope="col" class="col-destaque">plus</th>
-          <th scope="col">pro</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">Items in the Today list</th>
-          <td>8 a day</td>
-          <td>no limit</td>
-          <td class="col-destaque">no limit</td>
-          <td>no limit</td>
-        </tr>
-        <tr>
-          <th scope="row">Items in the Backlog list</th>
-          <td>no limit</td>
-          <td>no limit</td>
-          <td class="col-destaque">no limit</td>
-          <td>no limit</td>
-        </tr>
-        <tr>
-          <th scope="row">Connected devices</th>
-          <td>1</td>
-          <td>2</td>
-          <td class="col-destaque">3</td>
-          <td>10</td>
-        </tr>
-        <tr>
-          <th scope="row">Ads</th>
-          <td>yes</td>
-          <td>light</td>
-          <td class="col-destaque">no</td>
-          <td>no</td>
-        </tr>
-        <tr>
-          <th scope="row">Archive of completed tasks</th>
-          <td>30 days</td>
-          <td>full</td>
-          <td class="col-destaque">full</td>
-          <td>full</td>
-        </tr>
-        <tr>
-          <th scope="row">The midnight turnover</th>
-          <td><svg class="glifo glifo-p marca-sim" role="img" aria-label="yes"><use href="#g-oc"></use></svg></td>
-          <td><svg class="glifo glifo-p marca-sim" role="img" aria-label="yes"><use href="#g-oc"></use></svg></td>
-          <td class="col-destaque"><svg class="glifo glifo-p marca-sim" role="img" aria-label="yes"><use href="#g-oc"></use></svg></td>
-          <td><svg class="glifo glifo-p marca-sim" role="img" aria-label="yes"><use href="#g-oc"></use></svg></td>
-        </tr>
-        <tr>
-          <th scope="row">Labels, periods and types</th>
-          <td><svg class="glifo glifo-p marca-sim" role="img" aria-label="yes"><use href="#g-oc"></use></svg></td>
-          <td><svg class="glifo glifo-p marca-sim" role="img" aria-label="yes"><use href="#g-oc"></use></svg></td>
-          <td class="col-destaque"><svg class="glifo glifo-p marca-sim" role="img" aria-label="yes"><use href="#g-oc"></use></svg></td>
-          <td><svg class="glifo glifo-p marca-sim" role="img" aria-label="yes"><use href="#g-oc"></use></svg></td>
-        </tr>
-        <tr>
-          <th scope="row">API and MCP for integrations</th>
-          <td><svg class="glifo glifo-p marca-nao" role="img" aria-label="no"><use href="#g-ox"></use></svg></td>
-          <td><svg class="glifo glifo-p marca-nao" role="img" aria-label="no"><use href="#g-ox"></use></svg></td>
-          <td class="col-destaque"><svg class="glifo glifo-p marca-nao" role="img" aria-label="no"><use href="#g-ox"></use></svg></td>
-          <td><svg class="glifo glifo-p marca-sim" role="img" aria-label="yes"><use href="#g-oc"></use></svg></td>
-        </tr>
-        <tr>
-          <th scope="row">Billing</th>
-          <td>none</td>
-          <td>yearly</td>
-          <td class="col-destaque">monthly or yearly</td>
-          <td>monthly or yearly</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<hr class="fio" aria-hidden="true">
-
-<!-- ─────────────────────────── THE QUESTIONS ─────────────────────────── -->
-<section id="questions" class="secao">
-  <div class="secao-cabeca">
-    <p class="etiqueta"><span>At the foot of the page &middot;</span> The questions</p>
-    <h2>What people usually ask</h2>
-  </div>
-
-  <div class="perguntas">
-    <div class="pergunta">
-      <h3>What happens when the Today list fills up on the free plan?</h3>
-      <p>
-        Nothing locks. You write the ninth item as usual, it lands in the backlog
-        instead of Today, and jayio says why. Losing what you just typed would be
-        the worst possible way to ask for money, so it does not happen.
-      </p>
-    </div>
-
-    <div class="pergunta">
-      <h3>Why does basic still show ads?</h3>
-      <p>
-        Because that is what makes one dollar a month possible. If ads do not
-        bother you, this is the best deal on the page. If they do, plus exists for
-        exactly that, and it is the only difference between the two.
-      </p>
-    </div>
-
-    <div class="pergunta">
-      <h3>Why is basic billed only once a year?</h3>
-      <p>
-        The fixed card fee eats almost a quarter of a one dollar charge. Billed
-        once a year the price holds up, and you pay less than you would spreading
-        it out.
-      </p>
-    </div>
-
-    <div class="pergunta">
-      <h3>Is there a trial?</h3>
-      <p>
-        The free plan is the trial, and it does not expire. A trial with a
-        deadline takes away what you were already using, and that is worse than
-        never having had it.
-      </p>
-    </div>
-
-    <div class="pergunta">
-      <h3>What counts as a device?</h3>
-      <p>
-        Every browser or phone where you stay signed in. Signing out of one frees
-        the slot straight away, so moving between machines costs nothing, and
-        nothing is blocked for being open somewhere else.
-      </p>
-    </div>
-
-    <div class="pergunta">
-      <h3>What if I cancel?</h3>
-      <p>
-        The subscription runs to the end of the period you paid for and then the
-        account goes back to free. Your tasks all stay, including the ones past
-        the eighth item of the day: they sit in the backlog.
-      </p>
-    </div>
-  </div>
 </section>
 
 <!-- ─────────────────────────── CLOSING ─────────────────────────── -->
 <section class="fecho">
-  <h2>Start free. The day turns just the same.</h2>
-  <p>The midnight turnover is not a paid feature.</p>
+  <h2>Start free. The rest is optional.</h2>
+  <p>Your list empties itself every day, paid or not.</p>
   <a class="btn btn-primario btn-g" href="https://app.jayio.app">Open jayio</a>
 </section>
 

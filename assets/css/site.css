@@ -195,22 +195,61 @@ code { font-family: var(--mono); font-size: .88em; }
 
 .btn-g { padding: .78rem 1.5rem; font-size: 1.05rem; }
 
+/* Um ícone só, trocado pela mesma condição que troca as cores do tema: sem JS
+   no caminho, o ícone certo já vem pintado no primeiro quadro. Mostra o
+   destino, não o estado: no papel claro aparece a lua, que é para onde o
+   clique leva. O nome da ação continua no HTML, fora da tela, e é ele que o
+   leitor de tela anuncia. */
 .btn-tema {
   border: 0;
   background: transparent;
   color: var(--tinta-3);
-  font-family: var(--texto);
-  font-size: .875rem;
   cursor: pointer;
-  padding: .4rem .5rem;
-  text-decoration: underline;
-  text-underline-offset: .2em;
-  text-decoration-style: dotted;
+  padding: .4rem;
+  line-height: 0;
+  border-radius: 999px;
+  display: inline-grid;
+  place-items: center;
 }
 .btn-tema:hover { color: var(--tinta); }
 
+/* Sol e lua são os mesmos glifos de período que o app usa, `p-m` e `p-n`, e
+   por isso o traço acompanha o `.periodo`: o ícone do tema não pode ser mais
+   gordo que o resto do alfabeto. */
+.ico-tema {
+  width: 20px;
+  height: 20px;
+  grid-area: 1 / 1;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform .25s ease, opacity .2s ease;
+}
+
+/* A troca é um giro, como o swap do daisyUI: o que sai gira e encolhe, o que
+   entra chega girando de volta ao lugar. Os dois ficam empilhados na mesma
+   célula da grade, então nada salta de posição durante a animação. */
+.ico-sol { opacity: 0; transform: rotate(-90deg) scale(.4); }
+.ico-lua { opacity: 1; transform: rotate(0) scale(1); }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) .ico-sol { opacity: 1; transform: rotate(0) scale(1); }
+  :root:not([data-tema="claro"]) .ico-lua { opacity: 0; transform: rotate(90deg) scale(.4); }
+}
+:root[data-tema="escuro"] .ico-sol { opacity: 1; transform: rotate(0) scale(1); }
+:root[data-tema="escuro"] .ico-lua { opacity: 0; transform: rotate(90deg) scale(.4); }
+:root[data-tema="claro"] .ico-sol { opacity: 0; transform: rotate(-90deg) scale(.4); }
+:root[data-tema="claro"] .ico-lua { opacity: 1; transform: rotate(0) scale(1); }
+
 /* O trocador de idioma tem o mesmo peso do botão de tema: é ajuste de leitura,
-   não ação de produto, e não disputa com Preços nem com Entrar. */
+   não ação de produto, e não disputa com Preços nem com Entrar.
+
+   É texto, e não bandeira, depois de tentar as duas. Bandeira não diz idioma,
+   inglês não é um país e português menos ainda, e a 20px ela vira mancha
+   colorida em qualquer desenho. O nome do idioma, escrito no próprio idioma,
+   resolve em menos bytes e sem ambiguidade. */
 .btn-idioma {
   color: var(--tinta-3);
   font-family: var(--texto);
@@ -221,6 +260,16 @@ code { font-family: var(--mono); font-size: .88em; }
   text-decoration-style: dotted;
 }
 .btn-idioma:hover { color: var(--tinta); }
+
+/* A travessia entre páginas continua animada, agora sem nada específico do
+   trocador: a marca fica ancorada e o resto faz fusão. Vale para qualquer
+   navegação interna, e onde o navegador não implementa a transição entre
+   documentos a navegação é a de sempre. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+
+.marca { view-transition-name: marca; }
 
 /* ---------------------------------------------------------------- topo --- */
 
@@ -1232,7 +1281,6 @@ code { font-family: var(--mono); font-size: .88em; }
 /* O sim e o não são os glifos do próprio app, concluída e cancelada. A página
    fala o mesmo alfabeto que o produto, em vez de importar um check genérico. */
 .marca-sim { color: var(--musgo); margin-top: .34em; }
-.marca-nao { color: var(--tinta-3); margin-top: .34em; }
 
 .planos-rodape { max-width: 46rem; margin: 2.2rem auto 0; text-align: center; }
 
@@ -1243,77 +1291,6 @@ code { font-family: var(--mono); font-size: .88em; }
   .planos { grid-template-columns: 1fr; }
   .plano, .plano:nth-child(odd), .plano:nth-child(even) { transform: none; }
   .plano-ciclo { min-height: 0; }
-}
-
-/* ---------------------------------------------------------- comparativo -- */
-
-/* A rolagem lateral fica na caixa, não no corpo da página: em tela estreita a
-   tabela desliza sozinha e o resto do papel continua parado. */
-.tabela-caixa {
-  overflow-x: auto;
-  border: 1px solid var(--borda);
-  border-radius: 14px;
-  background: var(--papel-2);
-  box-shadow: var(--sombra);
-}
-
-.tabela-planos {
-  border-collapse: collapse;
-  width: 100%;
-  min-width: 42rem;
-  font-size: .95rem;
-}
-.tabela-planos th,
-.tabela-planos td {
-  padding: .8rem 1rem;
-  text-align: center;
-  border-bottom: 1px solid var(--borda);
-}
-.tabela-planos tbody tr:last-child th,
-.tabela-planos tbody tr:last-child td { border-bottom: 0; }
-
-.tabela-planos thead th {
-  font-family: var(--mao);
-  font-weight: 600;
-  font-size: 1.05rem;
-  color: var(--terra);
-  border-bottom: 1px solid var(--borda-forte);
-  background: var(--papel-3);
-}
-.tabela-planos thead th:first-child { background: transparent; }
-
-.tabela-planos tbody th {
-  text-align: left;
-  font-family: var(--texto);
-  font-weight: 500;
-  color: var(--tinta-2);
-  white-space: nowrap;
-}
-
-.tabela-planos td { color: var(--tinta-2); }
-
-/* A coluna recomendada é a mesma da ficha acima, marcada por um papel um pouco
-   mais claro, sem repetir o selo. */
-.tabela-planos .col-destaque { background: color-mix(in oklab, var(--azul) 7%, transparent); }
-.tabela-planos thead .col-destaque { background: color-mix(in oklab, var(--azul) 14%, transparent); }
-
-@media (max-width: 760px) {
-  .tabela-planos { min-width: 36rem; font-size: .88rem; }
-  .tabela-planos th, .tabela-planos td { padding: .65rem .6rem; }
-}
-
-/* ----------------------------------------------------------- perguntas --- */
-
-.perguntas {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.6rem 2.4rem;
-}
-.pergunta h3 { font-size: 1.12rem; margin: 0 0 .35rem; }
-.pergunta p { margin: 0; color: var(--tinta-2); font-size: .97rem; }
-
-@media (max-width: 760px) {
-  .perguntas { grid-template-columns: 1fr; gap: 1.4rem; }
 }
 
 /* -------------------------------------------------------------- motion --- */

@@ -49,7 +49,9 @@
   <div class="topo-acoes">
     <a class="btn-idioma" href="../pricing.html" data-idioma="en" hreflang="en" lang="en">English</a>
     <button type="button" class="btn-tema" data-tema-toggle aria-pressed="false">
-      <span class="btn-tema-txt">Escurecer</span>
+      <svg class="ico-tema ico-lua" aria-hidden="true"><use href="#p-n"></use></svg>
+      <svg class="ico-tema ico-sol" aria-hidden="true"><use href="#p-m"></use></svg>
+      <span class="sr btn-tema-txt">Escurecer</span>
     </button>
     <a class="btn btn-fantasma" href="precos.html" aria-current="page">Planos</a>
     <a class="btn btn-primario" href="https://app.jayio.app">Entrar</a>
@@ -63,8 +65,8 @@
   <p class="etiqueta"><span>Ficha de preço &middot;</span> Os planos</p>
   <h1>O jayio inteiro, de graça.</h1>
   <p class="linha-fina">
-    A virada da meia-noite, a Reserva, os dois eixos do símbolo, os períodos e
-    as labels: isso tudo é o plano gratuito, sem cartão e sem prazo para
+    A limpeza automática da sua lista principal, os símbolos, os períodos e as
+    labels: isso tudo é o plano gratuito, sem cartão e sem prazo para
     acabar. Os planos pagos vêm depois, quando você quiser o jayio em mais de
     um aparelho, sem propaganda, ou conversando com os seus agentes.
   </p>
@@ -146,174 +148,16 @@
 
   <p class="planos-rodape miudo">
     Preços em dólar. O preço em destaque é o mensal. Pagar o ano de uma vez
-    custa menos, e no básico é o único jeito. Trocar de plano ou cancelar é imediato, e nada do que você
+    custa menos, e no básico é o único jeito. Os planos gratuito e básico
+    mostram anúncios. Trocar de plano ou cancelar é imediato, e nada do que você
     escreveu é apagado quando a assinatura termina.
   </p>
 </section>
 
-<hr class="fio" aria-hidden="true">
-
-<!-- ─────────────────────────── O COMPARATIVO ─────────────────────────── -->
-<section id="comparativo" class="secao">
-  <div class="secao-cabeca">
-    <p class="etiqueta"><span>Lado a lado &middot;</span> O comparativo</p>
-    <h2>O que muda de um para o outro</h2>
-    <p class="secao-sub">
-      Cada degrau tira uma limitação e só. Nada aqui é uma tela diferente: o
-      jayio é o mesmo em todos os planos.
-    </p>
-  </div>
-
-  <div class="tabela-caixa">
-    <table class="tabela-planos">
-      <caption class="sr">Comparativo dos quatro planos do jayio</caption>
-      <thead>
-        <tr>
-          <th scope="col">&nbsp;</th>
-          <th scope="col">gratuito</th>
-          <th scope="col">básico</th>
-          <th scope="col" class="col-destaque">plus</th>
-          <th scope="col">pro</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">Itens na lista Hoje</th>
-          <td>8 por dia</td>
-          <td>sem limite</td>
-          <td class="col-destaque">sem limite</td>
-          <td>sem limite</td>
-        </tr>
-        <tr>
-          <th scope="row">Itens na lista Reserva</th>
-          <td>sem limite</td>
-          <td>sem limite</td>
-          <td class="col-destaque">sem limite</td>
-          <td>sem limite</td>
-        </tr>
-        <tr>
-          <th scope="row">Aparelhos conectados</th>
-          <td>1</td>
-          <td>2</td>
-          <td class="col-destaque">3</td>
-          <td>10</td>
-        </tr>
-        <tr>
-          <th scope="row">Propaganda</th>
-          <td>sim</td>
-          <td>discreta</td>
-          <td class="col-destaque">não</td>
-          <td>não</td>
-        </tr>
-        <tr>
-          <th scope="row">Histórico de concluídas</th>
-          <td>30 dias</td>
-          <td>completo</td>
-          <td class="col-destaque">completo</td>
-          <td>completo</td>
-        </tr>
-        <tr>
-          <th scope="row">A virada à meia-noite</th>
-          <td><svg class="glifo glifo-p marca-sim" role="img" aria-label="sim"><use href="#g-oc"></use></svg></td>
-          <td><svg class="glifo glifo-p marca-sim" role="img" aria-label="sim"><use href="#g-oc"></use></svg></td>
-          <td class="col-destaque"><svg class="glifo glifo-p marca-sim" role="img" aria-label="sim"><use href="#g-oc"></use></svg></td>
-          <td><svg class="glifo glifo-p marca-sim" role="img" aria-label="sim"><use href="#g-oc"></use></svg></td>
-        </tr>
-        <tr>
-          <th scope="row">Labels, períodos e tipos</th>
-          <td><svg class="glifo glifo-p marca-sim" role="img" aria-label="sim"><use href="#g-oc"></use></svg></td>
-          <td><svg class="glifo glifo-p marca-sim" role="img" aria-label="sim"><use href="#g-oc"></use></svg></td>
-          <td class="col-destaque"><svg class="glifo glifo-p marca-sim" role="img" aria-label="sim"><use href="#g-oc"></use></svg></td>
-          <td><svg class="glifo glifo-p marca-sim" role="img" aria-label="sim"><use href="#g-oc"></use></svg></td>
-        </tr>
-        <tr>
-          <th scope="row">API e MCP para integrações</th>
-          <td><svg class="glifo glifo-p marca-nao" role="img" aria-label="não"><use href="#g-ox"></use></svg></td>
-          <td><svg class="glifo glifo-p marca-nao" role="img" aria-label="não"><use href="#g-ox"></use></svg></td>
-          <td class="col-destaque"><svg class="glifo glifo-p marca-nao" role="img" aria-label="não"><use href="#g-ox"></use></svg></td>
-          <td><svg class="glifo glifo-p marca-sim" role="img" aria-label="sim"><use href="#g-oc"></use></svg></td>
-        </tr>
-        <tr>
-          <th scope="row">Cobrança</th>
-          <td>nenhuma</td>
-          <td>anual</td>
-          <td class="col-destaque">mensal ou anual</td>
-          <td>mensal ou anual</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<hr class="fio" aria-hidden="true">
-
-<!-- ─────────────────────────── AS PERGUNTAS ─────────────────────────── -->
-<section id="perguntas" class="secao">
-  <div class="secao-cabeca">
-    <p class="etiqueta"><span>Ao pé da página &middot;</span> As perguntas</p>
-    <h2>O que costuma ser perguntado</h2>
-  </div>
-
-  <div class="perguntas">
-    <div class="pergunta">
-      <h3>O que acontece quando a lista Hoje enche no plano gratuito?</h3>
-      <p>
-        Nada trava. Você escreve o nono item normalmente, ele entra na Reserva em
-        vez da lista Hoje, e o jayio diz por quê. Perder o que você acabou de escrever
-        seria o pior jeito de pedir dinheiro, então isso não acontece.
-      </p>
-    </div>
-
-    <div class="pergunta">
-      <h3>Por que o básico ainda tem propaganda?</h3>
-      <p>
-        Porque é o que faz um dólar por mês ser possível. Se a propaganda não te
-        incomoda, esse é o melhor negócio da página. Se incomoda, o plus existe
-        exatamente para isso, e é a única diferença entre os dois.
-      </p>
-    </div>
-
-    <div class="pergunta">
-      <h3>Por que o básico só é cobrado por ano?</h3>
-      <p>
-        A taxa fixa de cartão come quase um quarto de uma cobrança de um dólar.
-        Cobrando uma vez por ano o preço cabe, e você paga menos do que pagaria
-        parcelado.
-      </p>
-    </div>
-
-    <div class="pergunta">
-      <h3>Tem período de teste?</h3>
-      <p>
-        O plano gratuito é o teste, e ele não vence. Teste com prazo tira depois
-        aquilo que você já estava usando, e isso é pior do que nunca ter tido.
-      </p>
-    </div>
-
-    <div class="pergunta">
-      <h3>O que conta como um aparelho?</h3>
-      <p>
-        Cada navegador ou celular onde você fica conectado. Sair de um libera a
-        vaga na hora, então trocar de máquina não custa nada, e nada é bloqueado
-        por estar em outro lugar.
-      </p>
-    </div>
-
-    <div class="pergunta">
-      <h3>E se eu cancelar?</h3>
-      <p>
-        A assinatura vale até o fim do período pago e depois a conta volta ao
-        gratuito. Suas tarefas continuam todas lá, inclusive as que passam do
-        oitavo item do dia: elas ficam na Reserva.
-      </p>
-    </div>
-  </div>
-</section>
-
 <!-- ─────────────────────────── FECHO ─────────────────────────── -->
 <section class="fecho">
-  <h2>Comece de graça. O dia vira igual.</h2>
-  <p>A virada da meia-noite não é um recurso pago.</p>
+  <h2>Comece de graça. O resto é opcional.</h2>
+  <p>Sua lista se esvazia sozinha todo dia, pagando ou não.</p>
   <a class="btn btn-primario btn-g" href="https://app.jayio.app">Abrir o jayio</a>
 </section>
 
