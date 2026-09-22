@@ -23,6 +23,8 @@ index.html              a página principal, em inglês
 pricing.html            planos, comparativo e perguntas, em inglês
 pt/index.html           a página principal, em português
 pt/precos.html          planos, comparativo e perguntas, em português
+sitemap.xml             as quatro páginas, com os pares de idioma em xhtml:link
+robots.txt              libera tudo e aponta o sitemap
 assets/css/site.css     tokens de tema, tipografia, layout
 assets/js/virada.js     a simulação da virada (FLIP), o tema e os textos dos dois idiomas
 assets/img/             logo, arte do gaio em avif/webp, favicons
@@ -44,6 +46,11 @@ não alcança um arquivo externo sem CORS. Mudou um ícone, muda nos quatro.
 
 Toda mudança de texto acontece duas vezes, uma por idioma, e os textos da
 simulação ficam na tabela `TEXTOS` do `virada.js`, não no HTML.
+
+O `sitemap.xml` traz as quatro páginas com os mesmos pares de idioma que os
+`<link rel="alternate">` do `<head>` declaram, e cada `<loc>` carrega o
+`hreflang` dos dois lados mais o `x-default` no inglês. Mudou uma página, o
+`<lastmod>` dela acompanha; entrou uma página nova, entra nos dois lugares.
 
 Não há framework, bundler nem passo de build.
 

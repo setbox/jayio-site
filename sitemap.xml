@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://jayio.app/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jayio.app/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://jayio.app/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jayio.app/"/>
+    <image:image>
+      <image:loc>https://jayio.app/assets/img/gaio-1200.webp</image:loc>
+      <image:title>jayio</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://jayio.app/pricing.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jayio.app/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://jayio.app/pt/precos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jayio.app/pricing.html"/>
+    <image:image>
+      <image:loc>https://jayio.app/assets/img/gaio-1200.webp</image:loc>
+      <image:title>jayio</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://jayio.app/pt/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://jayio.app/pt/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jayio.app/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jayio.app/"/>
+    <image:image>
+      <image:loc>https://jayio.app/assets/img/gaio-1200.webp</image:loc>
+      <image:title>jayio</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://jayio.app/pt/precos.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://jayio.app/pt/precos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jayio.app/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jayio.app/pricing.html"/>
+    <image:image>
+      <image:loc>https://jayio.app/assets/img/gaio-1200.webp</image:loc>
+      <image:title>jayio</image:title>
+    </image:image>
+  </url>
+
+</urlset>
