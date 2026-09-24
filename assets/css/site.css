@@ -297,12 +297,50 @@ code { font-family: var(--mono); font-size: .88em; }
 :root[data-tema="claro"] .marca .marca-claro { display: block; }
 :root[data-tema="claro"] .marca .marca-escuro { display: none; }
 
+/* Planos é navegação, não ação: texto, para "Entrar" ser o único botão do
+   topo, e de contorno, para não disputar com o botão cheio da página. */
+.topo-link {
+  font-family: var(--mao);
+  font-weight: 600;
+  font-size: .95rem;
+  color: var(--tinta-2);
+  text-decoration: none;
+  padding: .4rem .5rem;
+}
+.topo-link:hover { color: var(--tinta); }
+.topo-link[aria-current="page"] {
+  color: var(--tinta);
+  text-decoration: underline;
+  text-decoration-color: var(--ocre);
+  text-underline-offset: .3em;
+}
+
 /* Sem menu, quem empurra as ações para a direita é a própria margem. */
 .topo-acoes {
   display: flex;
   align-items: center;
   gap: .9rem;
   margin-inline-start: auto;
+}
+
+/* No celular a marca e as quatro ações cabem numa linha só se tudo encolher
+   junto: com o tamanho do desktop elas quebravam para baixo da marca e, abaixo
+   de uns 360px, empurravam a página para o lado e cortavam o texto. */
+@media (max-width: 560px) {
+  .topo { flex-wrap: nowrap; gap: .6rem; padding-block: 1rem; }
+  .marca { flex-shrink: 0; }
+  .marca img { height: 30px; }
+  .topo-acoes { gap: .25rem; }
+  .topo-acoes .btn { padding: .42rem .8rem; font-size: .85rem; }
+  .topo-link { font-size: .85rem; padding: .3rem .35rem; }
+  .btn-idioma { padding: .3rem .35rem; font-size: .8rem; }
+  .btn-tema { padding: .3rem; }
+}
+
+/* Nos aparelhos mais estreitos sai o link de planos: o preço continua a um
+   toque, pelo link logo abaixo do título e pelo rodapé. */
+@media (max-width: 380px) {
+  .topo-link { display: none; }
 }
 
 /* ------------------------------------------------------------ abertura --- */
@@ -354,7 +392,20 @@ code { font-family: var(--mono); font-size: .88em; }
 
 .linha-fina { font-size: 1.16rem; color: var(--tinta-2); max-width: 34rem; }
 
-.abertura-btns { display: flex; gap: .8rem; flex-wrap: wrap; margin: 1.8rem 0 1rem; }
+.abertura-btns { display: flex; gap: .8rem 1.4rem; flex-wrap: wrap; align-items: center; margin: 1.8rem 0 1rem; }
+
+/* Uma ação principal por tela: o botão cheio é "Começar grátis". Ver a virada
+   é curiosidade, então é texto com seta, e não um segundo botão disputando. */
+.link-rolar {
+  font-family: var(--mao);
+  font-weight: 600;
+  color: var(--tinta-2);
+  text-decoration: underline;
+  text-decoration-color: var(--borda-forte);
+  text-underline-offset: .25em;
+  padding: .5rem 0;
+}
+.link-rolar:hover { color: var(--tinta); text-decoration-color: currentColor; }
 
 .abertura-fig { margin: 0; }
 
@@ -1063,7 +1114,7 @@ code { font-family: var(--mono); font-size: .88em; }
 
 .bando-grade {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   margin-top: 2.5rem;
 }
@@ -1291,6 +1342,105 @@ code { font-family: var(--mono); font-size: .88em; }
   .planos { grid-template-columns: 1fr; }
   .plano, .plano:nth-child(odd), .plano:nth-child(even) { transform: none; }
   .plano-ciclo { min-height: 0; }
+}
+
+/* ------------------------------------------------------- conectar IA --- */
+
+/* A página que explica MCP e API para quem não programa. Mesmo papel dos
+   planos: fichas coladas, sem painel de SaaS. */
+.ia-portas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.4rem;
+}
+.ia-porta {
+  background: var(--papel-2);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 1.6rem 1.5rem;
+  box-shadow: var(--sombra);
+}
+.ia-porta:nth-child(odd) { transform: rotate(-.25deg); }
+.ia-porta:nth-child(even) { transform: rotate(.2deg); }
+.ia-porta h2 { font-size: 1.45rem; margin: 0 0 .2rem; color: var(--terra); }
+.ia-porta .ia-sigla { font-family: var(--mono); font-size: .78rem; color: var(--tinta-3); margin: 0 0 1rem; }
+.ia-porta p { color: var(--tinta-2); margin: 0 0 .9rem; }
+.ia-porta dl { margin: 0; display: grid; gap: .7rem; }
+.ia-porta dt { font-family: var(--mao); font-weight: 600; font-size: .85rem; color: var(--azul); }
+.ia-porta dd { margin: .1rem 0 0; color: var(--tinta-2); }
+
+/* A fala do exemplo é escrita à mão: é o que a pessoa diria, não código. */
+.ia-fala {
+  font-family: var(--mao);
+  background: var(--azul-lavado);
+  border-radius: 12px 12px 12px 2px;
+  padding: .6rem .9rem;
+  display: inline-block;
+  color: var(--tinta);
+}
+
+.ia-passos {
+  list-style: none;
+  counter-reset: passo;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.1rem;
+  max-width: 46rem;
+}
+.ia-passos li {
+  counter-increment: passo;
+  display: grid;
+  /* `minmax(0, 1fr)` e não `1fr`: com `1fr` a coluna cresce até caber o
+     comando inteiro do bloco de código, e no celular a página ganhava rolagem
+     lateral. Assim é o bloco que rola, sozinho. */
+  grid-template-columns: 2.2rem minmax(0, 1fr);
+  gap: .9rem;
+  color: var(--tinta-2);
+}
+.ia-passos li > div { min-width: 0; overflow-wrap: anywhere; }
+.ia-passos li::before {
+  content: counter(passo);
+  font-family: var(--mao);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--papel);
+  background: var(--terra);
+  border-radius: 999px;
+  width: 2.2rem;
+  height: 2.2rem;
+  display: grid;
+  place-items: center;
+}
+.ia-passos strong { color: var(--tinta); }
+.ia-passos pre {
+  margin: .6rem 0 0;
+  overflow-x: auto;
+  background: var(--papel-3);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  padding: .8rem 1rem;
+  font-size: .8rem;
+}
+.ia-passos code, .ia-perguntas code { font-family: var(--mono); font-size: .86em; }
+
+.ia-perguntas { max-width: 46rem; display: grid; gap: .6rem; }
+.ia-perguntas details {
+  background: var(--papel-2);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: .9rem 1.1rem;
+}
+.ia-perguntas summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--tinta);
+}
+.ia-perguntas details p { margin: .7rem 0 0; color: var(--tinta-2); }
+
+@media (max-width: 760px) {
+  .ia-portas { grid-template-columns: 1fr; }
+  .ia-porta, .ia-porta:nth-child(odd), .ia-porta:nth-child(even) { transform: none; }
 }
 
 /* -------------------------------------------------------------- motion --- */

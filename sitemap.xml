@@ -5,7 +5,7 @@
 
   <url>
     <loc>https://jayio.app/</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://jayio.app/"/>
@@ -19,7 +19,7 @@
 
   <url>
     <loc>https://jayio.app/pricing.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://jayio.app/pricing.html"/>
@@ -32,8 +32,22 @@
   </url>
 
   <url>
+    <loc>https://jayio.app/connect-ai.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jayio.app/connect-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://jayio.app/pt/conectar-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jayio.app/connect-ai.html"/>
+    <image:image>
+      <image:loc>https://jayio.app/assets/img/gaio-1200.webp</image:loc>
+      <image:title>jayio</image:title>
+    </image:image>
+  </url>
+
+  <url>
     <loc>https://jayio.app/pt/</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://jayio.app/pt/"/>
@@ -47,12 +61,26 @@
 
   <url>
     <loc>https://jayio.app/pt/precos.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://jayio.app/pt/precos.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://jayio.app/pricing.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://jayio.app/pricing.html"/>
+    <image:image>
+      <image:loc>https://jayio.app/assets/img/gaio-1200.webp</image:loc>
+      <image:title>jayio</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://jayio.app/pt/conectar-ia.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://jayio.app/pt/conectar-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jayio.app/connect-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jayio.app/connect-ai.html"/>
     <image:image>
       <image:loc>https://jayio.app/assets/img/gaio-1200.webp</image:loc>
       <image:title>jayio</image:title>
